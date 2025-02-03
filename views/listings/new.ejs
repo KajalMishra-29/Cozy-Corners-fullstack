@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozy Corners</title>
+</head>
+<body>
+    <form action="/listings" method="post">
+        <label for="title">Enter title</label>
+        <input type="text" name="listing[title]" id="title" placeholder="Mountain Retreat">
+
+        <label for="description">Enter description</label>
+        <textarea type="textarea" name="listing[description]" id="description" placeholder="Stay in the heart of the city in this stylish loft apartment. Perfect for urban explorers!"></textarea>
+
+        <label for="image">Image URL</label>
+        <input type="text" name="listing[image]" id="image">
+
+        <label for="price">Enter price</label>
+        <input type="number" name="listing[price]" id="price" placeholder="2000">
+
+        <label for="country">Enter country</label>
+        <input type="text" name="listing[country]" id="country" placeholder="India">
+
+        <label for="location">Enter location</label>
+        <input type="text" name="listing[location]" id="location" placeholder="Jaipur, Rajasthan">
+
+        <button>Add</button>
+    </form>
+</body>
+</html>

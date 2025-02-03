@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozy Corners</title>
+</head>
+<body>
+    <form action="/listings/<%= listing.id %>?_method=PATCH" method="post">
+        <label for="title">title</label>
+        <input type="text" name="listing[title]" id="title" value="<%= listing.title %>">
+
+        <label for="description">Enter description</label>
+        <textarea type="textarea" name="listing[description]" id="description"><%= listing.description %></textarea>
+
+        <label for="image">Image URL</label>
+        <input type="text" name="listing[image]" id="image" value="<%= listing.image %>">
+
+        <label for="price">price</label>
+        <input type="number" name="listing[price]" id="price" value="<%= listing.price %>">
+
+        <label for="country">country</label>
+        <input type="text" name="listing[country]" id="country" value="<%= listing.country %>">
+
+        <label for="location">location</label>
+        <input type="text" name="listing[location]" id="location" value="<%= listing.location %>">
+
+        <button>Update changes</button>
+    </form>
+</body>
+</html>
