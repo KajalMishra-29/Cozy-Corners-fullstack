@@ -1,21 +1,39 @@
-*{
+* {
     margin: 0;
     padding: 0;
     text-decoration: none;
     font-family: "Plus Jakarta Sans";
 }
-:root{
+
+:root {
     --primary-color: #0F1035;
-    --secondary-color:#22668D;
+    --secondary-color: #22668D;
     --tertiary-color: #ffc107;
     --light-y-color: #FFFADD;
-    --light-b-color:#8ECDDD;
+    --light-b-color: #8ECDDD;
 }
-.navbar{
-    height: 4.5rem;
-    background-color: #f8f9fa;
+.index::before{
+    content: "";
+    position: fixed;
+    top: 0;
+    width: 0;
+    background-image: url('../assets/bg15.jpg');
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    z-index: -100;
+    background-size: cover;
+    filter: blur(2px);
 }
-.navbar-brand{
+.index .card{
+    background-color: transparent;
+}
+.index .card-body{
+    background-color:rgba(0,0,0,0.4); 
+    color: #fff;;
+}
+
+.navbar-brand {
     color: var(--secondary-color);
     font-weight: 600;
     display: flex;
@@ -23,27 +41,51 @@
     align-items: center;
     font-size: 1rem;
 }
-.navbar-brand span{
+
+.navbar-brand span {
     font-size: 1.8rem;
 }
-.navbar-brand:hover{
+
+.navbar-brand:hover {
     color: #185070;
 }
-.nav-link{
+.nav-link {
     font-weight: 500;
-    border: 2px solid transparent;
+    position: relative;
+    text-decoration: none;
 }
-.nav-link:hover{
-    border: 2px solid var(--secondary-color);
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transition: width 0.4s ease-in-out, left 0.4s ease-in-out;
 }
-.f-info-links a{
+
+.nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.nav-link:not(:hover)::after {
+    width: 0;
+    left: 50%;
+}
+
+.f-info-links a {
     text-decoration: none;
     color: #222222;
 }
-.f-info-links a:hover{
+
+.f-info-links a:hover {
     text-decoration: underline;
 }
-.f-info{
+
+.f-info {
     display: flex;
     background-color: #ebebeb;
     height: 8rem;
@@ -51,42 +93,51 @@
     justify-content: center;
     align-items: center;
 }
-.f-info-social i{
-    color: rgba(0,0,0,0.7);
+
+.f-info-social i {
+    color: rgba(0, 0, 0, 0.7);
     cursor: pointer;
     transition: all 0.2s linear;
 }
-.f-info-social i:hover{
-    color: rgba(0,0,0,0.9);
+
+.f-info-social i:hover {
+    color: rgba(0, 0, 0, 0.9);
 }
-.listing-card{
+
+.listing-card {
     text-decoration: none;
 }
-.card{
+.card {
     border: none;
 }
-.card-img-overlay{
-    background-color: rgba(255,255,255,0.2);
+.listing-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 17rem;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: white;
     opacity: 0;
-    transition: all 0.1s ease-in;
+    transition: all 0.2s ease-in;
 }
-.card-img-overlay:hover{
+.listing-card-overlay:hover {
     opacity: 1;
-    transform: scale(1.2);
 }
-.card-img-top{
+.index .card-img-top {
     height: 17rem;
-    border-radius: 0.7rem;
 }
-.card-body{
+.card-body {
     color: black;
 }
-.btn-blue{
+.show .card-img-top{
+    height: 20rem;
+}
+.btn-blue {
     background-color: #22668D;
     color: #fff;
     padding: 0.3rem 0.6rem;
@@ -95,19 +146,68 @@
     border-radius: 5px;
 
 }
-.btn-blue:hover{
+
+.btn-blue:hover {
     background-color: #3191c9;
     color: #fff;
 }
-.btn-yellow{
+
+.btn-yellow {
     background-color: #ffc107;
     color: #fff;
     padding: 0.3rem 0.6rem;
     border: none;
     border-radius: 5px;
 }
-.btn-yellow:hover{
-    background-color: #ffd147;
+
+.btn-yellow:hover {
+    background-color: #ffa500;
     color: #fff;
 }
-
+.new::before{
+    content: "";
+    position: fixed;
+    top: 0;
+    width: 0;
+    background-image: url('../assets/bg2.jpg');
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    z-index: -100;
+    background-size: cover;
+    filter: brightness(0.9);
+}
+.new .box{
+    background-color: rgba(255,255,255,0.7);;
+    font-weight: 500;
+}
+.new .box form input, 
+.new .box form textarea 
+{
+    background-color: inherit;
+    font-weight: 500;
+    border: 2px solid var(--secondary-color);
+}
+.edit::before{
+    content: "";
+    position: fixed;
+    top: 0;
+    width: 0;
+    background-image: url('../assets/bg6.avif');
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    z-index: -100;
+    background-size: cover;
+    filter: brightness(0.9);
+}
+.edit .box{
+    background-color: rgba(255,255,255,0.7);
+    font-weight: 500;
+}
+.edit .box form input, 
+.edit .box form textarea 
+{
+    background-color: inherit;
+    border: 2px solid var(--secondary-color);
+}

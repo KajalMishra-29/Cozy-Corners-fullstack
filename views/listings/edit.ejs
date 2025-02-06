@@ -1,9 +1,9 @@
 <% layout("/layouts/boilerplate") %>
-<body>
+<body class="edit">
     <div class="row">
         <div class="col-xl-9 col-lg-10 col-md-11 mx-auto">
-            <h1 class="text-center fw-bold mt-4" style="color: #22668D; word-spacing: 0.5rem;">Edit your Listing</h1>
-            <div class="mt-4 mb-5 border rounded-4 p-xl-4 p-4">
+            <h1 class="text-center fw-bold mt-4" style="color: #fff; word-spacing: 0.5rem;">Edit your Listing</h1>
+            <div class="mt-4 mb-5 border rounded-4 p-xl-4 p-4 box">
                 <form action="/listings/<%= listing.id %>?_method=PATCH" method="post">
                     <div class="mb-4">
                         <label for="title" class="form-label mb-1">Title :</label>
@@ -31,7 +31,7 @@
                             <input type="text" name="listing[location]" id="location" class="form-control" value="<%= listing.location %>">
                         </div>
                     </div>
-                    <button class="btn btn-yellow fw-semibold">Update changes</button>
+                    <button class="btn btn-blue fw-semibold">Update changes</button>
                 </form>
             </div>
         </div>

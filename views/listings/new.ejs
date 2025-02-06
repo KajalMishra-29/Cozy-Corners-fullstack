@@ -1,8 +1,8 @@
 <% layout("/layouts/boilerplate") %>
-<body>
+<body class="new">
     <div class="col-xl-9 col-lg-10 col-md-11 mx-auto">
-        <h1 class="text-center fw-bold mt-4" style="color: #22668D; word-spacing: 0.5rem;">Create new Listing</h1>
-        <div class="mt-4 mb-5 border rounded-4 p-xl-4 p-4">
+        <h1 class="text-center fw-bold mt-4" style="color: #fff; word-spacing: 0.5rem;">Create new Listing</h1>
+        <div class="mt-4 mb-5 border rounded-4 p-xl-4 p-4 box">
             <form action="/listings" method="post">
                 <div class="mb-4">
                     <label for="title" class="form-label mb-1">Enter a catchy title :</label>
@@ -30,7 +30,7 @@
                         <input type="text" name="listing[location]" id="location" class="form-control" placeholder="Jaipur, Rajasthan">
                     </div>
                 </div>
-                <button class="btn btn-yellow fw-semibold">Add Listing</button>
+                <button class="btn btn-blue fw-semibold">Add Listing</button>
             </form>
         </div>
     </div>

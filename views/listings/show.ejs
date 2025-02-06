@@ -1,17 +1,17 @@
 <% layout("/layouts/boilerplate") %>
-<body>
+<body class="show">
     <div class="row">
         <div class="col-xl-6 col-lg-8 col-md-9 py-4 pe-xl-5 mx-auto">
-            <div class="mt-2 mb-5">
-                <h1 class="text-center fw-bold" style="color: #22668D;"><%= listing.title %></h1>
+            <div class="mt-1 mb-4">
+                <h2 class="text-center fw-bold" style="color: #22668D; word-spacing: 5px;"><%= listing.title %></h2>
             </div>
             <div class="card mx-auto">
-                <img src="<%= listing.image %>" class="card-img-top" alt="...">
+                <img src="<%= listing.image %>" class="card-img-top rounded-3" alt="...">
                 <div class="card-body">
-                  <p class="card-title"><%= listing.description %></p>
-                  <p class="card-text"><p>&#8377; <%= listing.price.toLocaleString("en-in") %></p>
+                  <p><%= listing.description %></p>
+                  <p><p>&#8377; <%= listing.price.toLocaleString("en-in") %></p>
                   <p><%= listing.location %></p>
-                  <p class="mb-4 mb-xl-5"><%= listing.country %></p></p>
+                  <p><%= listing.country %></p>
                   <div class="d-flex">
                     <a href="/listings/<%= listing.id %>/edit" class="btn-blue me-3 fw-semibold">Update</a>
                     <form action="/listings/<%= listing.id %>?_method=DELETE" method="post">

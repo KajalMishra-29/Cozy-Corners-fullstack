@@ -1,22 +1,22 @@
 <% layout("/layouts/boilerplate") %>
-<body>
-    <h1 class="mt-4 text-center fw-bold fs-1" style="color: #22668D;">Cozy Corners</h1>
-    <h5 class="mb-5 text-center" style="color: #ffbf49;">Your Perfect Stay, Just a Click Away!</h5>
-   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mt-2 mb-5 g-5">
-        <% allListings.forEach(listing => { %>
-            <a href="/listings/<%= listing.id %>" class="listing-card">
-                <div class="card col">
-                    <img src="<%= listing.image %>" class="card-img-top" alt="...">
-                    <div class="card-img-overlay">
-                        <h3 class="card-text"><%= listing.country %></h3>
-                        <p class="card-text"><%= listing.location %></p>
+<body class="index">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 mt-2 mb-5 g-5">
+         <% allListings.forEach(listing => { %>
+             <a href="/listings/<%= listing.id %>" class="listing-card">
+                 <div class="card rounded-3">
+                    <div class="img-box">
+                        <img src="<%= listing.image %>" class="card-img-top rounded-top-3" alt="...">
+                        <div class="listing-card-overlay rounded-top-3">
+                            <h3 class="card-text"><%= listing.country %></h3>
+                            <p class="card-text"><%= listing.location %></p>
+                        </div>
                     </div>
-                    <div class="card-body pt-1">
-                        <div class="card-text fw-semibold"><%= listing.title %></div>
-                        <div class="card-text">&#8377;<%= listing.price.toLocaleString("en-in") %></div>
-                    </div>
-                </div>
-            </a>
-        <% }) %>
-   </div>
+                     <div class="card-body pt-1 rounded-bottom-3">
+                         <div class="card-text fw-semibold"><%= listing.title %></div>
+                         <div class="card-text fw-semibold">&#8377; <%= listing.price.toLocaleString("en-in") %></div>
+                     </div>
+                 </div>
+             </a>
+         <% }) %>
+    </div>
 </body>
