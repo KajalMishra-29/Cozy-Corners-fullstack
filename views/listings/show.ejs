@@ -7,9 +7,9 @@
             </div>
             <div class="card mx-auto">
                 <img src="<%= listing.image %>" class="card-img-top rounded-3" alt="...">
-                <div class="card-body">
+                <div class="card-body mt-5">
                   <p><%= listing.description %></p>
-                  <p><p>&#8377; <%= listing.price.toLocaleString("en-in") %></p>
+                  <p><p>&#8377; <%= listing.price.toLocaleString("en-in") %> /night</p>
                   <p><%= listing.location %></p>
                   <p><%= listing.country %></p>
                   <div class="d-flex">
@@ -23,7 +23,7 @@
         </div>
         <div class="col-xl-6 py-4 ps-xl-5">
             <div class="row mb-4">
-                <div class="col-xl-10 col-lg-6 col-md-10 mx-xl-auto mx-lg-0 mx-md-auto">
+                <div class="col-xl-9 col-lg-6 col-md-10 mx-xl-auto mx-lg-0 mx-md-auto">
                     <div id="calendar"></div>
                 </div>
             </div>
@@ -33,5 +33,41 @@
         </div>
     </div>
     
+    <!-- reviews -->
+    <div class="row mt-5">
+        <div class="col border-top">
+            <h2 class="text-center text-dark fw-bold mt-5 text-decoration-underline">Customer &nbsp; Reviews</h2>
+            <div class="col-xl-9 col-lg-10 col-md-11 mx-auto bg-light p-4 rounded-4 mt-4 mb-5">
+                <form action="/listings/<%= listing.id %>/reviews" method="post">
+                    <div>
+                        <label for="rating" class="form-label mb-1">Rate Us :</label>
+                        <input type="range" name="review[rating]" id="rating" min="0" max="5" step="1" class="form-range">
+                    </div>
+                    <div>
+                        <label for="comment" class="form-label mb-1">Comment :</label>
+                        <textarea name="review[comment]" id="comment" class="form-control" rows="3" maxlength="180"></textarea>
+                    </div>
+                    <button class="btn-yellow mt-4 fw-semibold">Add review</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2">
+        <% listing.reviews.forEach(review => { %>
+            <div class="col">
+                <div class="p-3 mb-4 bg-light border rounded-4">
+                    <p><i class="fa-regular fa-xl fa-circle-user me-2" style="color: #787878;"></i> username</p>
+                    <p class="mb-1"><%= review.rating %></p>
+                    <p class="mb-1"><%= review.comment %></p>
+                    <div class="d-flex mt-3">
+                        <form action="">
+                            <button class="btn btn-secondary py-1 me-2">Edit</button>
+                        </form>
+                        <a class="btn btn-dark py-1">Delete</a>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
 </body>
 
