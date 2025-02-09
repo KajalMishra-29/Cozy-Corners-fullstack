@@ -38,14 +38,14 @@
         <div class="col border-top">
             <h2 class="text-center text-dark fw-bold mt-5 text-decoration-underline">Customer &nbsp; Reviews</h2>
             <div class="col-xl-9 col-lg-10 col-md-11 mx-auto bg-light p-4 rounded-4 mt-4 mb-5">
-                <form action="/listings/<%= listing.id %>/reviews" method="post">
+                <form action="/listings/<%= listing.id %>/reviews" method="post" novalidate class="needs-validation">
                     <div>
                         <label for="rating" class="form-label mb-1">Rate Us :</label>
-                        <input type="range" name="review[rating]" id="rating" min="0" max="5" step="1" class="form-range">
+                        <input type="range" name="review[rating]" id="rating" min="1" max="5" step="1" class="form-range">
                     </div>
                     <div>
                         <label for="comment" class="form-label mb-1">Comment :</label>
-                        <textarea name="review[comment]" id="comment" class="form-control" rows="3" maxlength="180"></textarea>
+                        <textarea name="review[comment]" id="comment" class="form-control" rows="3" maxlength="180" required></textarea>
                     </div>
                     <button class="btn-yellow mt-4 fw-semibold">Add review</button>
                 </form>

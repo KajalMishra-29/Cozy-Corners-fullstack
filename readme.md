@@ -6,15 +6,15 @@ CozyCorners is a web application that enables users to share and discover unique
 
 ## Features
 
-- Create, view, edit, and delete `(CRUD)` rental property listings.
-- `Models` -> Listing, Review, Booking, User
-- `Client-side validations` using bootstrap's built-in validation classes.
-- `Server-side validation` using Joi.
-- Uses `EJS` templating and `EJS-Mate` for dynamic rendering.
-- `MongoDB` as the database for storing listings.
+- Create, view, edit, and delete (CRUD) rental property listings.
+- Models -> Listing, Review, Booking, User
+- Client-side validations using bootstrap's built-in validation classes.
+- Server-side validation using Joi.
+- Uses EJS templating and EJS-Mate for dynamic rendering.
+- MongoDB as the database for storing listings.
 - Error handling with custom error classes.
 - Middleware for validating user inputs.
-- `Passport` for authentication and autorization
+- Passport for authentication and autorization
 - Authorization to prevent unauthorized actions.
 
 ## Technologies Used
