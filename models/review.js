@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const reviewSchema = mongoose.Schema({
     comment: {
         type: String,
+        maxlength: 180,
         required: true
     },
     rating: {
@@ -15,7 +16,7 @@ const reviewSchema = mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now()
-    }
+    },
 })
 
 const Review = mongoose.model("Review", reviewSchema);

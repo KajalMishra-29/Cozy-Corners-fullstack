@@ -1,15 +1,9 @@
-(() => {
-    'use strict'
-    const forms = document.querySelectorAll('.needs-validation')
+let editReviewBtns = document.querySelectorAll(".edit-review-btn");
+let deleteReviewBtns = document.querySelectorAll(".delete-review-btn");
+let editReviewForms = document.querySelectorAll(".edit-review-form");
+editReviewBtns.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+        editReviewForms[index].classList.toggle("show"); // Show the corresponding form
+    });
+})
 
-    Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
-            }
-
-            form.classList.add('was-validated')
-        }, false)
-    })
-})()
