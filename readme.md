@@ -4,9 +4,9 @@
 
 CozyCorners is a web application that enables users to share and discover unique rental properties. Built with Node, Express.js, MongoDB and EJS, the platform provides intutive experience for users to list, manage, and browse properties.
 
-The server is initialized in app.js using Express.  
-Routes are modularized inside the /routes folder using `express.Router().`
-Each route file handles specific API endpoints to keep the codebase clean and maintainable.
+The server is initialized in `app.js` using Express.
+Routes are modularized inside the `/routes` folder using `express.Router().`
+Sessions are managed using `express-session` and `cookies`, ensuring secure user authentication.
 
 ## Features
 
@@ -52,11 +52,15 @@ Each route file handles specific API endpoints to keep the codebase clean and ma
    ```sh
    mongod
    ```
-4. Run the server:
+4. Initialize the database. Run the database initialization script inside the init folder
+   ```sh
+   node init/index.js
+   ```
+5. Run the server:
    ```sh
    node index.js
    ```
-5. Open your browser and navigate to:
+6. Open your browser and navigate to:
    ```sh
    http://localhost:8080/listings
    ```
