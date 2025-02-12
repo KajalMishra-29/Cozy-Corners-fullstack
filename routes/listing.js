@@ -22,7 +22,12 @@ router.get("/", wrapAsync(async (req, res, next) => {
 
 // new form
 router.get("/new", (req, res) => {
-    res.render("listings/new.ejs");
+    if (req.isAuthenticated()) {
+        res.render("listings/new.ejs");
+    } else {
+        req.flash("error", "You must be logged in to create a new listing.")
+        res.redirect("/login");
+    }
 })
 // show
 router.get("/:id", wrapAsync(async (req, res, next) => {

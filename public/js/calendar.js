@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
         validRange: function () {
             return {
                 start: new Date(),
-                end: new Date().setMonth(new Date().getMonth() + 3)
+                end: new Date().setMonth(new Date().getMonth() + 6)
             };
         },
     });

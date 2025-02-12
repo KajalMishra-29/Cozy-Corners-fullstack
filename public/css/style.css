@@ -220,35 +220,34 @@
     align-items: center;
     outline: none;
     border-radius: 0.7rem;
+    background-color: rgba(0,0,0,0.3);
+    border: 2px solid #ffffff;
+    cursor: pointer;
+}
+.fc-daygrid-day-frame:hover{
+    background-color: rgba(0,0,0,0.4);
 }
 .fc-daygrid-day-number{
     text-decoration: none;
-    color: #1a587b;
-    font-size: 1.2rem;
-    font-weight: 600;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 700;
 }
 .fc .fc-toolbar-title{
-    color: #185070;
-    font-weight: 600;
-    font-size: 1.2rem;
+    color: #154a69;
+    font-weight: 800;
+    font-size: 1.3rem;
 }
 .fc-col-header-cell-cushion{
     text-decoration: none;
-    color: #fff;
+    color: #154a69;
+    font-weight: 900;
+    font-size: 1.2rem;
     text-transform: uppercase;
 }
-.fc-scrollgrid  .fc-scrollgrid-liquid{
-    border: none;
-}
-.fc .fc-scrollgrid-liquid {
-    outline: none;
-    overflow: hidden;
-}
-.fc-scrollgrid-sync-inner{
-    border: 1px solid var(--secondary-color);
-}
 .fc .fc-toolbar.fc-header-toolbar{
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #b8b8b8;
 }
 .fc .fc-button-primary ,
 .fc .fc-button-primary:disabled {
@@ -256,20 +255,18 @@
     font-size: 0.9rem;
 }
 .fc-col-header{
-    background-color: var(--secondary-color);
+    background-color: transparent;
 }
 .fc .fc-daygrid-day.fc-day-today {
-    background-color: var(--light-b-color);
+    background-color: rgba(255,255,255,0.2);
     border-radius: 0.7rem;
 }
 .fc-theme-standard td, .fc-theme-standard th,
 .fc-theme-standard .fc-scrollgrid{
-    border: 1px solid white;
+    border: 1px solid transparent;
 }
 .fc .fc-cell-shaded, .fc .fc-day-disabled {
-    background-color: #e5e5e5;
     border-radius: 0.75rem;
-    opacity: 0.4;
 }
 .fc .fc-button-primary {
     background-color: var(--secondary-color);
@@ -283,6 +280,20 @@
     color: white;
     font-weight: 700;
 }
+#calendar-box::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -100;
+    background: url("../assets/calendarBG.jpg");
+    filter: brightness(0.97);
+    background-size: cover;
+    border-radius: 1.2rem;
+}
+
 .error-icon{
     background-image: url('../assets/turtle.jpg');
     background-size: cover;

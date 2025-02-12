@@ -56,9 +56,11 @@ app.use((req, res, next) => {
 
 app.use(passoprt.initialize());
 app.use(passoprt.session());
+
 passport.use(new LocalStratergy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter)
