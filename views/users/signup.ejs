@@ -1,0 +1,36 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <div class="col-xl-9 col-lg-10 col-md-11 mx-auto">
+        <h1 class="text-center fw-bold mt-4 mb-5" style="color: #22668D; word-spacing: 0.5rem;">Signup on CozyCorners</h1>
+        <div class="mb-5 border rounded-4 p-xl-4 p-4 box">
+            <form action="/signup" method="post" novalidate class="needs-validation">
+                <div class="mb-4">
+                    <label for="username" class="form-label mb-1">Enter Username :</label>
+                    <input type="text" name="user[username]" id="username"  class="form-control" placeholder="kajal-mishra-29" required>
+                    <div class="invalid-feedback">
+                        Username is required, please provide a valid username.
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="form-label mb-1">Enter email :</label>
+                    <input type="email" name="user[email]" id="email" class="form-control" placeholder="kajalmishra0829@gmail.com">
+                    <div class="invalid-feedback">
+                        Email is required, please provide a valid email.
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="form-label mb-1">Enter password :</label>
+                    <div class="input-group">
+                        <input type="password" name="user[password]" id="password" class="form-control" required>
+                        <span class="input-group-text" style="cursor: pointer;" id="password-eye-box"><i class="fa-regular fa-eye-slash"></i></span>
+                        <div class="invalid-feedback">
+                            Password is required, please provide a vaid password.
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-blue fw-semibold">Signup</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>

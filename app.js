@@ -2,18 +2,19 @@ const express = require("express");
 const app = express();
 const port = 8080;
 const mongoose = require("mongoose");
-const Listing = require("./models/listing");
-const Review = require("./models/review")
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
-const wrapAsync = require("./utils/wrapAsync")
 const ExpressError = require("./utils/ExpressError");
-const { listingSchema, reviewSchema } = require("./schema");
 const listingRouter = require("./routes/listing");
 const reviewRouter = require("./routes/review");
+const userRouter = require("./routes/user");
 const session = require("express-session");
 const flash = require("connect-flash");
+const passoprt = require("passport");
+const LocalStratergy = require("passport-local");
+const passport = require("passport");
+const User = require("./models/user");
 
 async function main() {
     await mongoose.connect("mongodb://127.0.0.1:27017/CozyCorners");
@@ -53,9 +54,15 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use("/listings", listingRouter);
+app.use(passoprt.initialize());
+app.use(passoprt.session());
+passport.use(new LocalStratergy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
+app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter)
+app.use("/", userRouter);
 
 app.all('*', (req, res, next) => {
     next(new ExpressError(404, "Page Not Found"));

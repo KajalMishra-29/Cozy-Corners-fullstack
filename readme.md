@@ -7,6 +7,10 @@ CozyCorners is a web application that enables users to share and discover unique
 The server is initialized in `app.js` using Express.
 Routes are modularized inside the `/routes` folder using `express.Router().`
 Sessions are managed using `express-session` and `cookies`, ensuring secure user authentication.
+`connect-flash` is used for flash messages.
+
+`Passport.js` is used for authentication and authorization.
+`passport-local-mongoose` is used for `hashing` and `salting` passwords.
 
 ## Features
 

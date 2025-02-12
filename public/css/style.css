@@ -32,7 +32,6 @@
     background-color:rgba(0,0,0,0.4); 
     color: #fff;;
 }
-
 .navbar-brand {
     color: var(--secondary-color);
     font-weight: 600;
@@ -41,11 +40,9 @@
     align-items: center;
     font-size: 1rem;
 }
-
 .navbar-brand span {
     font-size: 1.8rem;
 }
-
 .navbar-brand:hover {
     color: #185070;
 }
@@ -99,11 +96,9 @@
     cursor: pointer;
     transition: all 0.2s linear;
 }
-
 .f-info-social i:hover {
     color: rgba(0, 0, 0, 0.9);
 }
-
 .listing-card {
     text-decoration: none;
 }
@@ -145,24 +140,21 @@
     text-decoration: none;
     border: none;
     border-radius: 5px;
-
 }
-
 .btn-blue:hover {
     background-color: #3191c9;
     color: #fff;
 }
-
 .btn-yellow {
-    background-color: #ffc107;
+    background-color: #ffa500;
     color: #fff;
     padding: 0.3rem 0.6rem;
     border: none;
     border-radius: 5px;
+    text-decoration: none;
 }
-
 .btn-yellow:hover {
-    background-color: #ffa500;
+    background-color: #ffc107;
     color: #fff;
 }
 .new::before{
@@ -189,9 +181,6 @@
     font-weight: 500;
     border: 2px solid var(--secondary-color);
 }
-.new.loaded{
-    display: block;
-}
 .edit::before{
     content: "";
     position: fixed;
@@ -215,7 +204,7 @@
     background-color: inherit;
     border: 2px solid var(--secondary-color);
 }
-.edit, .new{
+.edit, .new, .index{
     display: none;
 }
 .loaded{
