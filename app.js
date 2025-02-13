@@ -48,11 +48,6 @@ const sessionOptions = {
 app.use(session(sessionOptions));
 
 app.use(flash());
-app.use((req, res, next) => {
-    res.locals.success = req.flash("success");
-    res.locals.error = req.flash("error");
-    next();
-})
 
 app.use(passoprt.initialize());
 app.use(passoprt.session());
@@ -61,6 +56,12 @@ passport.use(new LocalStratergy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use((req, res, next) => {
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    res.locals.currUser = req.user;
+    next();
+})
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter)

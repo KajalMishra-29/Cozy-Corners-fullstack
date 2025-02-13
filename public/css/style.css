@@ -266,6 +266,7 @@
     border: 1px solid transparent;
 }
 .fc .fc-cell-shaded, .fc .fc-day-disabled {
+    background-color: rgba(0,0,0,0.1);
     border-radius: 0.75rem;
 }
 .fc .fc-button-primary {
@@ -279,6 +280,10 @@
     border-color: #004a75;
     color: white;
     font-weight: 700;
+}
+.fc-day-other{
+ pointer-events: none;  
+ opacity: 0.5; 
 }
 #calendar-box::before{
     content: "";

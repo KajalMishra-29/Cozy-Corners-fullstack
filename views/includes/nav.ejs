@@ -11,8 +11,12 @@
           <a class="nav-link me-2 py-1" href="/listings/new">Add New Listing</a>
         </div>
         <div class="ms-auto">
-          <a href="/signup" class="btn-blue rounded-pill py-2 px-3 me-1">Signup</a>
-          <a href="/login" class="btn-yellow rounded-pill py-2 px-3">Login</a>
+          <% if (!currUser) { %>
+            <a href="/signup" class="btn-blue rounded-pill py-2 px-3 me-1">Signup</a>
+            <a href="/login" class="btn-yellow rounded-pill py-2 px-3">Login</a>
+          <% }  else { %>
+            <a href="/logout" class="btn-blue rounded-pill py-2 px-3">Logout</a>
+          <% } %>
         </div>
       </div>
     </div>
