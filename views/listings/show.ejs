@@ -7,78 +7,86 @@
             </div>
             <div class="card mx-auto">
                 <img src="<%= listing.image %>" class="card-img-top rounded-3" alt="...">
-                <p class="mt-2"><i>Owned by - <%= listing.owner.username %></i></p>
-                <div class="card-body mt-5">
+                <p class="mt-2"><i>Owned by : <span class="fw-semibold"><%= listing.owner.username %></span></i></p>
+                <div class="card-body mt-2">
                   <p><%= listing.description %></p>
                   <p><p>&#8377; <%= listing.price.toLocaleString("en-in") %> /night</p>
                   <p><%= listing.location %></p>
                   <p><%= listing.country %></p>
                   <div class="d-flex">
-                    <a href="/listings/<%= listing.id %>/edit" class="btn-blue me-3 fw-semibold">Update</a>
-                    <form action="/listings/<%= listing.id %>?_method=DELETE" method="post">
-                        <button class="btn-yellow fw-semibold">Delete</button>
-                    </form>
+                    <% if (currUser && currUser._id.equals(listing.owner._id)) { %>
+                        <a href="/listings/<%= listing.id %>/edit" class="btn-blue me-3 fw-semibold">Update</a>
+                        <form action="/listings/<%= listing.id %>?_method=DELETE" method="post">
+                            <button class="btn-yellow fw-semibold">Delete</button>
+                        </form>
+                    <% } %>
                   </div>
                 </div>
             </div>
         </div>
-        <div class="col-xl-6 col-lg-8 col-md-9 p-4 mt-4 mx-auto rounded-4 border position-relative">
-            <div id="calendar-box">
-                <div id="calendar" class="p-xl-4"></div>
+        <div class="col-xl-6 col-lg-8 col-md-9 mx-auto">
+            <div>
+                <% if (listing.bookingStatus == "open") { %>
+                    <div class="alert alert-success mt-xl-4 fs-5 fw-bold text-center py-2 mb-1" role="alert">
+                        Bookings &nbsp;Are &nbsp;Open!
+                    </div>
+                <% }  else { %>
+                    <div class="alert alert-danger mt-xl-4 fs-5 fw-bold text-center py-2 mb-1" role="alert">
+                        Bookings &nbsp;Are &nbsp;Closed!
+                    </div>
+                <% } %>
+            </div>
+            <% if (currUser && currUser._id.equals(listing.owner._id)) { %>
+                <div class="d-flex">
+                    <a href="/listings/<%= listing.id %>/bookingStatus" class="btn-blue-outline rounded-pill text-center" style="width: 100%;">Change Booking Status</a>
+                </div>
+            <% } %>
+            <div class="p-4 mt-3 rounded-4 border position-relative">
+                <div id="calendar-box">
+                    <div id="calendar" class="p-xl-4 mb-3"></div>
+                </div>
             </div>
         </div>
     </div>
     
-    <!-- add new reviews -->
-    <div class="row mt-5">
-        <div class="col border-top">
-            <h2 class="text-center text-dark fw-bold mt-5 text-decoration-underline">Customer &nbsp; Reviews</h2>
-            <div class="col-xl-9 col-lg-10 col-md-11 mx-auto fw-semibold p-4 rounded-4 mt-4 mb-5" style="background-color: #C7C8CC;">
-                <form action="/listings/<%= listing.id %>/reviews" method="post" novalidate class="needs-validation">
-                    <div>
-                        <label for="rating" class="form-label mb-1">Rate Us :</label>
-                        <input type="range" name="review[rating]" id="rating" min="1" max="5" step="1" class="form-range">
-                    </div>
-                    <div>
-                        <label for="comment" class="form-label mb-1">Comment :</label>
-                        <textarea name="review[comment]" id="comment" class="form-control" rows="3" maxlength="180" required></textarea>
-                        <div class="invalid-feedback">
-                            Please, give some comment.
+    <!-- leave new reviews -->
+    
+        <div class="row mt-5">
+            <div class="col border-top">
+                <h2 class="text-center text-dark fw-bold mt-5 text-decoration-underline">Customer &nbsp; Reviews</h2>
+                <div class="col-xl-9 col-lg-10 col-md-11 mx-auto fw-semibold p-4 rounded-4 mt-4 mb-5" style="background-color: #C7C8CC;">
+                    <form action="/listings/<%= listing.id %>/reviews" method="post" novalidate class="needs-validation">
+                        <div>
+                            <label for="rating" class="form-label mb-1">Rate Us :</label>
+                            <input type="range" name="review[rating]" id="rating" min="1" max="5" step="1" class="form-range">
                         </div>
-                    </div>
-                    <button class="btn btn-outline-dark mt-4 fw-semibold rounded-pill">Add review</button>
-                </form>
+                        <div>
+                            <label for="comment" class="form-label mb-1">Comment :</label>
+                            <textarea name="review[comment]" id="comment" class="form-control" rows="3" maxlength="180" required></textarea>
+                            <div class="invalid-feedback">
+                                Please, give some comment.
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-dark mt-4 fw-semibold rounded-pill">Add review</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+   
     <!-- render all reviews -->
-    <div class="row row-cols-1 row-cols-md-2">
+    <div class="row row-cols-1 row-cols-md-2 mt-5">
         <% listing.reviews.forEach(review => { %>
             <div class="col">
-                <div class="position-relative">
-                    <div class="p-3 mb-4 bg-light border rounded-4">
-                        <p><i class="fa-regular fa-xl fa-circle-user me-2" style="color: #787878;"></i> username</p>
-                        <p class="mb-1"><%= review.rating %></p>
-                        <p class="mb-1"><%= review.comment %></p>
-                        <div class="d-flex mt-3">
-                            <a class="btn btn-secondary py-1 me-2 edit-review-btn">Edit</a>
-                            <form action="/listings/<%= listing.id %>/reviews/<%= review.id %>?_method=DELETE" method="post">
+                <div class="p-3 mb-4 bg-light border rounded-4 position-relative" style="height: 90%;">
+                    <p><i class="fa-regular fa-xl fa-circle-user me-2" style="color: #787878;"></i><span class="fw-semibold"><%= review.author.username %></span></p>
+                    <p class="mb-1"><%= review.rating %></p>
+                    <p class="mb-1"><%= review.comment %></p>
+                    <div class="d-flex position-absolute bottom-0 end-0">
+                        <% if (currUser && currUser._id.equals(review.author._id)) { %>
+                            <form action="/listings/<%= listing.id %>/reviews/<%= review.id %>?_method=DELETE" method="post" class="diplay-inline-block ms-auto">
                                 <button class="btn btn-dark py-1 delete-review-btn">Delete</button>
                             </form>
-                        </div>
-                    </div>
-                    <!-- edit review form -->
-                    <div class="edit-review-form">
-                        <form action="/listings/<%= listing.id %>/reviews/<%= review.id %>?_method=PATCH" method="post" class="p-4 mb-4 border rounded-4" style="background-color: #d1d1d1;">
-                            <div>
-                                <label for="comment" class="form-label">Comment :</label>
-                                <textarea name="review[comment]" id="comment" class="form-control" maxlength="180" rows="3" required><%= review.comment %></textarea>
-                                <div class="invalid-feedback">
-                                    Please, give some comment.
-                                </div>
-                            </div>
-                            <button class="btn-blue fw-semibold py-1 mt-3" href>Update</button>
-                        </form>
+                        <% } %>
                     </div>
                 </div>
             </div>

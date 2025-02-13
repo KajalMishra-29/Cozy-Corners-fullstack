@@ -35,7 +35,18 @@ const listingSchema = new mongoose.Schema({
     ],
     owner: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
+        ref: "User",
+    },
+    bookings: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Bookings"
+        }
+    ],
+    bookingStatus: {
+        type: String,
+        enum: ['open', 'close'],
+        default: 'open'
     }
 })
 

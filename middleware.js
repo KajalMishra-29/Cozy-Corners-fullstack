@@ -1,3 +1,5 @@
+const Listing = require("./models/listing");
+const Review = require("./models/review");
 const { listingSchema, reviewSchema } = require("./schema");
 
 module.exports.isLoggedIn = (req, res, next) => {
@@ -24,7 +26,6 @@ module.exports.validateListing = (req, res, next) => {
         next();
     }
 }
-
 module.exports.validateReview = (req, res, next) => {
     let { error } = reviewSchema.validate(req.body);
     if (error) {
@@ -32,4 +33,25 @@ module.exports.validateReview = (req, res, next) => {
     } else {
         next();
     }
+}
+
+module.exports.isOwner = async (req, res, next) => {
+    let { id } = req.params;
+    let listing = await Listing.findById(id);
+    // listing.owner.toString() !== req.user._id.toString() 
+    if (!listing.owner.equals(req.user._id)) {
+        req.flash("error", "Access denied: You do not have the required permissions.");
+        return res.redirect(`/listings/${id}`);
+    }
+    next();
+}
+module.exports.isReviewAuthor = async (req, res, next) => {
+    let { id, r_id } = req.params;
+    let review = await Review.findById(r_id);
+    // listing.owner.toString() !== req.user._id.toString() 
+    if (!review.author.equals(req.user._id)) {
+        req.flash("error", "Access denied: You do not have the required permissions.");
+        return res.redirect(`/listings/${id}`);
+    }
+    next();
 }

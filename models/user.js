@@ -7,7 +7,13 @@ const userSchema = new Schema({
     email: {
         type: String,
         required: true
-    }
+    },
+    bookings: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Booking"
+        }
+    ]
 })
 // passoprt-local-mongoose automatically saves 
 // uername , hash password and salt in user object

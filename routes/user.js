@@ -36,8 +36,12 @@ router.post("/login",
         failureFlash: true
     }),
     async (req, res) => {
-        req.flash("success", "Login successful!  Welcome back.");
-        res.redirect(res.locals.redirectUrl || "/listings");
+        req.flash("success", `Login successful!  Welcome back ${req.user.username}`);
+        if (res.locals.redirectUrl) {
+            let trimUrl = res.locals.redirectUrl.split("/").slice(0, 3).join("/");
+            return res.redirect(trimUrl);
+        }
+        res.redirect("/listings");
     }
 )
 
