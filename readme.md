@@ -15,43 +15,45 @@ Sessions are managed using `express-session` and `cookies`, ensuring secure user
 ## Features
 
 - **CRUD for Rental Listings** : Users can create, view, edit, and delete property listings.
-  
 - **Restful API**
 
 - **Dynamic UI Rendering** : Uses EJS templating and EJS-Mate for layout inheritance.
 
 - **Database Management**:
-   - `MongoDB` with `Mongoose` for structured data handling.
-   - Multiple models are implemented `Listing`, `User`, `Reviews` and `Booking`.
-   - `Schema` for each model is defined with mongoose.
-   - Relationships b/w these models are managed using mongoose's referencing system (via `ObjectId` refrences) and population.
+
+  - `MongoDB` with `Mongoose` for structured data handling.
+  - Multiple models are implemented `Listing`, `User`, `Reviews` and `Booking`.
+  - `Schema` for each model is defined with mongoose.
+  - Relationships b/w these models are managed using mongoose's referencing system (via `ObjectId` refrences) and population.
   - Ex: relationship b/w Listing and Booking follows Many-to-Many(M:N) relationship. One Listing can have many Bookings(from different Users). Also one User can have many Bookings(for different Listings). But Each booking is uniquely associated with one Listing and one user basically Booking model connects Listing & User and store booking info(date).
 
 - **FullCalendar Integration** :
-   - Provides an interactive calendar for booking.
-   - Enables seamless date selection and UI updates.
+
+  - Provides an interactive calendar for booking.
 
 - **Booking System** :
-   - Users can select available dates using FullCalendar integration.
-   - Prevents double booking of the same listing on the same date.
-   - Displays booked and available dates dynamically.
+
+  - Users can select available dates using `FullCalendar integration`.
+  - Prevents double booking of the same listing on the same date.
+  - Displays booked dates dynamically.
+  - Cleans up bookings older than six months with a scheduled `Cron` job, removing them from Booking collection along with their references from related Listings and User records.
+  - old bookings are archived in `ArchivedBookings` collection.
 
 - **Real-Time Booking Validation** :
-   - Session-based date selection before booking confirmation.
-   - Booked dates are disabled in the UI.
+
+  - Session-based date selection before booking confirmation.
+  - Booked dates are disabled in the UI.
 
 - **Client-Side and Server-Side Validation** :
-   - Bootstrap's built-in validation for client-side.
-   - `Joi` schema validation for server-side.
-     
+  - Bootstrap's built-in validation for client-side.
+  - `Joi` schema validation for server-side.
 - **Authorization & Authentication** :
-   - `Passport.js` for user authentication.
-   - Role-based access control.
-     
+  - `Passport.js` for user authentication.
+  - Role-based access control.
 - **Error handling**
-   - custom Error class
-   - `wrapAsync()` function hels to execute each route with `try and catch` without redundant code
-   - error handling middlewares
+  - custom Error class
+  - `wrapAsync()` function hels to execute each route with `try and catch` without redundant code
+  - error handling middlewares
 
 ## Technologies Used
 

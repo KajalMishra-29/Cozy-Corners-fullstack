@@ -73,15 +73,4 @@ router.delete("/:id",
         req.flash("success", "listing deleted successfully!")
         res.redirect("/listings");
     }))
-// change status of booking
-router.get("/:id/bookingStatus", wrapAsync(async (req, res, next) => {
-    const { id } = req.params;
-    let listing = await Listing.findById(id);
-    if (listing.bookingStatus === "open") {
-        await Listing.findByIdAndUpdate(id, { bookingStatus: "close" });
-    } else {
-        await Listing.findByIdAndUpdate(id, { bookingStatus: "open" });
-    }
-    res.redirect(`/listings/${id}`);
-}))
 module.exports = router;

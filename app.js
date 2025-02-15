@@ -16,6 +16,7 @@ const passoprt = require("passport");
 const LocalStratergy = require("passport-local");
 const passport = require("passport");
 const User = require("./models/user");
+const scheduleBookingCleanup = require("./bookingCleanup");
 
 
 async function main() {
@@ -28,6 +29,8 @@ main()
     .catch((err) => {
         console.log(err);
     });
+
+scheduleBookingCleanup();
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));

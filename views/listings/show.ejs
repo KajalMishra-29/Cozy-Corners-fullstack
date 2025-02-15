@@ -48,7 +48,7 @@
         </div>
         <% if (currUser && currUser._id.equals(listing.owner._id)) { %>
             <div class="d-flex">
-                <a href="/listings/<%= listing.id %>/bookingStatus" class="btn-blue-outline rounded-pill text-center">Change Booking Status</a>
+                <a href="/listings/<%= listing.id %>/bookings/bookingStatus" class="btn-blue-outline rounded-pill text-center">Change Booking Status</a>
             </div>
         <% } %>
     </div>

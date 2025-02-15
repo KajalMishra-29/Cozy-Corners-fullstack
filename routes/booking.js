@@ -67,4 +67,16 @@ router.get("/bookedDates", wrapAsync(async (req, res) => {
     res.json({ success: true, dates: bookedDates });
 }))
 
+// change status of booking
+router.get("/bookingStatus", wrapAsync(async (req, res, next) => {
+    const { id } = req.params;
+    let listing = await Listing.findById(id);
+    if (listing.bookingStatus === "open") {
+        await Listing.findByIdAndUpdate(id, { bookingStatus: "close" });
+    } else {
+        await Listing.findByIdAndUpdate(id, { bookingStatus: "open" });
+    }
+    res.redirect(`/listings/${id}`);
+}))
+
 module.exports = router;
