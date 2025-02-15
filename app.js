@@ -9,12 +9,14 @@ const ExpressError = require("./utils/ExpressError");
 const listingRouter = require("./routes/listing");
 const reviewRouter = require("./routes/review");
 const userRouter = require("./routes/user");
+const bookingRouter = require("./routes/booking");
 const session = require("express-session");
 const flash = require("connect-flash");
 const passoprt = require("passport");
 const LocalStratergy = require("passport-local");
 const passport = require("passport");
 const User = require("./models/user");
+
 
 async function main() {
     await mongoose.connect("mongodb://127.0.0.1:27017/CozyCorners");
@@ -66,6 +68,7 @@ app.use((req, res, next) => {
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter)
 app.use("/", userRouter);
+app.use("/listings/:id/bookings", bookingRouter);
 
 app.all('*', (req, res, next) => {
     next(new ExpressError(404, "Page Not Found"));

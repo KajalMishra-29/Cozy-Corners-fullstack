@@ -233,16 +233,15 @@
     align-items: center;
     outline: none;
     border-radius: 0.7rem;
-    background-color: rgba(0,0,0,0.3);
-    border: 2px solid #ffffff;
+    border: 2px solid #3191c9;
     cursor: pointer;
 }
 .fc-daygrid-day-frame:hover{
-    background-color: rgba(0,0,0,0.4);
+    background-color: #8ecddd97;
 }
 .fc-daygrid-day-number{
     text-decoration: none;
-    color: #fff;
+    color: #154a69;
     font-size: 1.3rem;
     font-weight: 700;
 }
@@ -255,7 +254,7 @@
     text-decoration: none;
     color: #154a69;
     font-weight: 900;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     text-transform: uppercase;
 }
 .fc .fc-toolbar.fc-header-toolbar{
@@ -271,16 +270,13 @@
     background-color: transparent;
 }
 .fc .fc-daygrid-day.fc-day-today {
-    background-color: rgba(255,255,255,0.2);
     border-radius: 0.7rem;
 }
 .fc-theme-standard td, .fc-theme-standard th,
 .fc-theme-standard .fc-scrollgrid{
     border: 1px solid transparent;
-}
-.fc .fc-cell-shaded, .fc .fc-day-disabled {
-    background-color: rgba(0,0,0,0.1);
-    border-radius: 0.75rem;
+    background-color: transparent;
+    border-radius: 0.7rem;
 }
 .fc .fc-button-primary {
     background-color: var(--secondary-color);
@@ -294,10 +290,6 @@
     color: white;
     font-weight: 700;
 }
-.fc-day-other{
- pointer-events: none;  
- opacity: 0.5; 
-}
 #calendar-box::before{
     content: "";
     position: absolute;
@@ -306,12 +298,24 @@
     height: 100%;
     width: 100%;
     z-index: -100;
-    background: url("../assets/calendarBG.jpg");
-    filter: brightness(0.97);
+    background: url("../assets/cbg.jpg");
     background-size: cover;
     border-radius: 1.2rem;
 }
-
+#bookBtn{
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.1s ease-in;
+}
+#viewBookedDates{
+    color: #4f4f4f;
+    text-decoration: none;
+    font-weight: 500;
+}
+#viewBookedDates:hover{
+    color: #272727;
+    text-decoration: underline 1.5px solid #272727;
+}
 .error-icon{
     background-image: url('../assets/turtle.jpg');
     background-size: cover;

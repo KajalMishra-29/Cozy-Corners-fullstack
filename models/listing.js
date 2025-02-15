@@ -40,7 +40,7 @@ const listingSchema = new mongoose.Schema({
     bookings: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Bookings"
+            ref: "Booking"
         }
     ],
     bookingStatus: {

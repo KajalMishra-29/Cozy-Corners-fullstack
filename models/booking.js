@@ -17,5 +17,8 @@ const bookingSchema = new Schema({
     }
 })
 
+// ensure a user can't book the same listing on the same date
+bookingSchema.index({ listing: 1, date: 1 }, { unique: true });
+
 const Booking = mongoose.model("Booking", bookingSchema);
 module.exports = Booking;
