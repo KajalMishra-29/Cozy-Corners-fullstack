@@ -14,17 +14,44 @@ Sessions are managed using `express-session` and `cookies`, ensuring secure user
 
 ## Features
 
-- Create, view, edit, and delete (CRUD) rental property listings.
-- Restful API
-- multiple models and relationship b/w them aare implemented Listing, Review, Booking, User
-- Client-side validations using bootstrap's built-in validation classes.
-- Server-side validation using Joi.
-- Uses EJS templating and EJS-Mate for dynamic rendering.
-- MongoDB as the database for storing listings.
-- Middleware for validating user inputs.
-- Passport for authentication and autorization
-- Authorization to prevent unauthorized actions.
-- Error handling with error handling middleware, handling async errors, custom error classes.
+- **CRUD for Rental Listings** : Users can create, view, edit, and delete property listings.
+  
+- **Restful API**
+
+- **Dynamic UI Rendering** : Uses EJS templating and EJS-Mate for layout inheritance.
+
+- **Database Management**:
+   - `MongoDB` with `Mongoose` for structured data handling.
+   - Multiple models are implemented `Listing`, `User`, `Reviews` and `Booking`.
+   - `Schema` for each model is defined with mongoose.
+   - Relationships b/w these models are managed using mongoose's referencing system (via `ObjectId` refrences) and population.
+  - Ex: relationship b/w Listing and Booking follows Many-to-Many(M:N) relationship. One Listing can have many Bookings(from different Users). Also one User can have many Bookings(for different Listings). But Each booking is uniquely associated with one Listing and one user basically Booking model connects Listing & User and store booking info(date).
+
+- **FullCalendar Integration** :
+   - Provides an interactive calendar for booking.
+   - Enables seamless date selection and UI updates.
+
+- **Booking System** :
+   - Users can select available dates using FullCalendar integration.
+   - Prevents double booking of the same listing on the same date.
+   - Displays booked and available dates dynamically.
+
+- **Real-Time Booking Validation** :
+   - Session-based date selection before booking confirmation.
+   - Booked dates are disabled in the UI.
+
+- **Client-Side and Server-Side Validation** :
+   - Bootstrap's built-in validation for client-side.
+   - `Joi` schema validation for server-side.
+     
+- **Authorization & Authentication** :
+   - `Passport.js` for user authentication.
+   - Role-based access control.
+     
+- **Error handling**
+   - custom Error class
+   - `wrapAsync()` function hels to execute each route with `try and catch` without redundant code
+   - error handling middlewares
 
 ## Technologies Used
 
