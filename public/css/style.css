@@ -231,9 +231,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    outline: none;
-    border-radius: 0.7rem;
-    border: 2px solid #3191c9;
+    background-color: transparent;
     cursor: pointer;
 }
 .fc-daygrid-day-frame:hover{
@@ -267,16 +265,20 @@
     font-size: 0.9rem;
 }
 .fc-col-header{
+    background-color: #8ecddd97;
+}
+.fc-theme-standard td, .fc-theme-standard th {
+    border: 2px solid #3191c994;
     background-color: transparent;
+
 }
-.fc .fc-daygrid-day.fc-day-today {
-    border-radius: 0.7rem;
-}
-.fc-theme-standard td, .fc-theme-standard th,
 .fc-theme-standard .fc-scrollgrid{
-    border: 1px solid transparent;
+    border-top: 2px solid #3191c994;
+    border-left: 2px solid #3191c994;
     background-color: transparent;
-    border-radius: 0.7rem;
+}
+.fc-day-other{
+    visibility: hidden !important;
 }
 .fc .fc-button-primary {
     background-color: var(--secondary-color);
@@ -307,14 +309,13 @@
     visibility: hidden;
     transition: all 0.1s ease-in;
 }
-#viewBookedDates{
-    color: #4f4f4f;
-    text-decoration: none;
-    font-weight: 500;
-}
-#viewBookedDates:hover{
-    color: #272727;
-    text-decoration: underline 1.5px solid #272727;
+
+#booking-number{
+    font-weight: 600;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    word-spacing: 0.3rem;
+    text-transform: capitalize;
 }
 .error-icon{
     background-image: url('../assets/turtle.jpg');

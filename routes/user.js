@@ -3,12 +3,12 @@ const router = express.Router();
 const User = require("../models/user");
 const wrapAsync = require("../utils/wrapAsync");
 const passport = require("passport");
-const { saveRedirectUrl } = require("../middleware");
+const { validateUser, saveRedirectUrl } = require("../middleware");
 
 router.get("/signup", (req, res) => {
     res.render("users/signup.ejs");
 })
-router.post("/signup", wrapAsync(async (req, res) => {
+router.post("/signup", validateUser, wrapAsync(async (req, res) => {
     try {
         let { username, email, password } = req.body;
         const newUser = new User({ username, email });

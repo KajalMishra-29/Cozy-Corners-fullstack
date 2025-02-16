@@ -17,3 +17,10 @@ module.exports.reviewSchema = Joi.object({
         comment: Joi.string().min(1).max(180).required()
     }).required()
 })
+
+module.exports.userSchema = Joi.object({
+    username: Joi.string().min(3).max(30).required(),
+    password: Joi.string().min(6).required(),
+    email: Joi.string().email().required(),
+    bookings: Joi.array().items(Joi.string().pattern(/^[0-9a-fA-F]{24}$/)), // MongoDB objectId validation
+})

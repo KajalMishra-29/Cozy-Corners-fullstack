@@ -1,31 +1,32 @@
 <% layout("/layouts/boilerplate") %>
 <body class="show">
-    <div class="row">
-        <div class="col-xl-6 col-lg-8 col-md-9 pt-4 pe-xl-5 mx-auto">
-            <div class="mt-1 mb-4">
-                <h2 class="text-center fw-bold" style="color: #22668D; word-spacing: 5px;"><%= listing.title %></h2>
+    <div class="row mb-4 mt-3">
+        <% if (currUser && currUser._id.equals(listing.owner._id)) { %>
+            <div class="py-2 d-flex align-items-center justify-content-xl-start justify-content-center">
+                <a href="/listings/<%= listing.id %>/edit" class="btn-blue me-2 px-4 fw-semibold rounded-pill">Update</a>
+                <form action="/listings/<%= listing.id %>?_method=DELETE" method="post">
+                    <button class="btn-yellow me-2 px-4 fw-semibold rounded-pill">Delete</button>
+                </form>
+                <a href="/listings/<%= listing.id %>/bookings/bookingStatus" class="btn-blue-outline rounded-pill">Change Booking Status</a>   
             </div>
+         <% } %>
+    </div>
+    <div class="row">
+        <div class="col-xl-6 col-lg-8 col-md-9 pe-xl-5 mx-auto mb-xl-0 mb-5">
             <div class="card mx-auto">
                 <img src="<%= listing.image %>" class="card-img-top rounded-3" alt="...">
                 <p class="mt-2"><i>Owned by : <span class="fw-semibold"><%= listing.owner.username %></span></i></p>
-                <div class="card-body mt-2 pb-0">
+                <div class="card-body pb-0">
+                    <h4 class="fw-bold fw-bold" style="color: #22668D; word-spacing: 5px;"><%= listing.title %></h4>
                   <p><%= listing.description %></p>
                   <p><p>&#8377; <%= listing.price.toLocaleString("en-in") %> /night</p>
                   <p><%= listing.location %></p>
                   <p><%= listing.country %></p>
-                  <div class="d-flex mb-4">
-                    <% if (currUser && currUser._id.equals(listing.owner._id)) { %>
-                        <a href="/listings/<%= listing.id %>/edit" class="btn-blue me-3 fw-semibold">Update</a>
-                        <form action="/listings/<%= listing.id %>?_method=DELETE" method="post">
-                            <button class="btn-yellow fw-semibold">Delete</button>
-                        </form>
-                    <% } %>
-                  </div>
                 </div>
             </div>
         </div>
         <div class="col-xl-6 col-lg-8 col-md-9 mx-auto">
-            <div class="p-4 pt-2 mt-xl-5 mt-3 rounded-4 border position-relative">
+            <div class="p-4 rounded-4 border position-relative">
                 <div id="calendar-box">
                     <div id="calendar" class="p-xl-4"></div>
                     <form action="/listings/<%= listing.id %>/bookings/book" class="ps-xl-4 pt-xl-0 pt-4">
@@ -33,26 +34,20 @@
                     </form>
                 </div>
             </div>
-            <div class="text-end"><a href="#" id="viewBookedDates">Look at already booked dates</a></div>
         </div>
-        <div class="mt-xl-0 mt-3">
-            <% if (listing.bookingStatus == "open") { %>
-                <div class="alert alert-success fs-5 fw-bold text-center py-2 mb-1" role="alert">
-                    Bookings &nbsp;Are &nbsp;Open!
-                </div>
-            <% }  else { %>
-                <div class="alert alert-danger fs-5 fw-bold text-center py-2 mb-1" role="alert">
-                    Bookings &nbsp;Are &nbsp;Closed!
-                </div>
-            <% } %>
-        </div>
-        <% if (currUser && currUser._id.equals(listing.owner._id)) { %>
-            <div class="d-flex">
-                <a href="/listings/<%= listing.id %>/bookings/bookingStatus" class="btn-blue-outline rounded-pill text-center">Change Booking Status</a>
+    </div>
+    <div class="row mt-4">
+        <div class="mb-2 text-center bg-light word-space-3" id="booking-number">No upcoming bookings at this moment!</div>
+        <% if (listing.bookingStatus == "open") { %>
+            <div class="alert alert-success fs-5 fw-bold text-center py-2 mb-1" role="alert">
+                Bookings &nbsp;Are &nbsp;Open!
+            </div>
+        <% }  else { %>
+            <div class="alert alert-danger fs-5 fw-bold text-center py-2 mb-1" role="alert">
+                Bookings &nbsp;Are &nbsp;Closed!
             </div>
         <% } %>
     </div>
-    
     <!-- leave new reviews -->
     
         <div class="row mt-5">
