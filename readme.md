@@ -12,6 +12,40 @@ Sessions are managed using `express-session` and `cookies`, ensuring secure user
 `Passport.js` is used for authentication and authorization.
 `passport-local-mongoose` is used for `hashing` and `salting` passwords.
 
+## Technologies Used
+
+- **Backend**: Node.js, Express.js, MongoDB, Mongoose
+- **Frontend**: EJS, Bootstrap
+- **Middleware**: method-override, express.json, express.urlencoded
+- **Validation**: Joi Schema Validation
+- **Authentication**: Passport.js,
+
+## Architecture - MVC Pattern
+
+CozyCorners follows the Model-View-Controller (MVC) architectural pattern:
+
+- Model:
+
+  - Defines `Schema` and interacts with the database using Mongoose.
+  - Models include Listing, User, Review, and Booking.
+  - Relationships between models are managed using `MongoDB references (ObjectId)`.
+
+- View:
+
+  - The frontend is rendered using `EJS templating`.
+  - `EJS-Mate` is used for layout inheritance and dynamic UI rendering.
+  - `Bootstrap` provides a responsive design.
+
+- Controller:
+
+  - Express framework to define routing in `(/routes)` and handle request processing (/controllers).
+  - Controllers in `/controllers` handle CRUD operations for listings, users, review and bookings.
+  - Middleware functions are used for validation, authentication, and error handling.
+
+- Routes:
+  - Routes are organized in the `/routes` folder.
+  - Separate route files exist for `listings`, `users`, `reviews`, and `bookings`.
+
 ## Features
 
 - **CRUD for Rental Listings** : Users can create, view, edit, and delete property listings.
@@ -54,14 +88,6 @@ Sessions are managed using `express-session` and `cookies`, ensuring secure user
   - custom Error class
   - `wrapAsync()` function hels to execute each route with `try and catch` without redundant code
   - error handling middlewares
-
-## Technologies Used
-
-- **Backend**: Node.js, Express.js, MongoDB, Mongoose
-- **Frontend**: EJS, Bootstrap
-- **Middleware**: method-override, express.json, express.urlencoded
-- **Validation**: Joi Schema Validation
-- **Authentication**: Passport.js,
 
 ## Installation
 
