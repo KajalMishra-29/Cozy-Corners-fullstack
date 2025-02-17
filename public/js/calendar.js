@@ -32,7 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
         bookedDates.forEach(date => {
             let elements = document.querySelectorAll(`[data-date='${date}']`);
             elements.forEach(el => {
-                el.style.backgroundColor = "#ccccccc";
+                console.log(el)
+                el.style.backgroundColor = "#cccccc";
             });
         });
     }
@@ -54,10 +55,9 @@ document.addEventListener('DOMContentLoaded', function () {
             today.setHours(0, 0, 0, 0);
             let cellDate = info.date;
             cellDate.setHours(0, 0, 0, 0);
-            console.log(info);
             if (cellDate < today) {
+                info.el.style.backgroundColor = "#eeeeee";;
                 info.el.style.opacity = "0.7";
-                info.el.style.backgroundColor = "#cdcdcda3";
             }
         },
         // listen for calendar view change

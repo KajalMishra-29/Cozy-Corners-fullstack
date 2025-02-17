@@ -16,7 +16,7 @@ const passoprt = require("passport");
 const LocalStratergy = require("passport-local");
 const passport = require("passport");
 const User = require("./models/user");
-const scheduleBookingCleanup = require("./bookingCleanup");
+const scheduleBookingCleanup = require("./utils/bookingCleanup");
 
 
 async function main() {

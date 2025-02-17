@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const cron = require("node-cron");
-const Booking = require("./models/booking")
-const Listing = require("./models/listing")
-const User = require("./models/user")
+const Booking = require("../models/booking")
+const Listing = require("../models/listing")
+const User = require("../models/user")
 
 const scheduleBookingCleanup = () => {
     cron.schedule('0 0 * * * ', async () => {
