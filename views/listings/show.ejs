@@ -17,7 +17,7 @@
                 <img src="<%= listing.image %>" class="card-img-top rounded-3" alt="...">
                 <p class="mt-2"><i>Owned by : <span class="fw-semibold"><%= listing.owner.username %></span></i></p>
                 <div class="card-body pb-0">
-                    <h4 class="fw-bold fw-bold" style="color: #22668D; word-spacing: 5px;"><%= listing.title %></h4>
+                    <h4 class="fw-bold" style="color: #22668D; word-spacing: 5px;"><%= listing.title %></h4>
                   <p><%= listing.description %></p>
                   <p><p>&#8377; <%= listing.price.toLocaleString("en-in") %> /night</p>
                   <p><%= listing.location %></p>
@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="row mt-4">
-        <div class="mb-2 text-center bg-light word-space-3" id="booking-number">No upcoming bookings at this moment!</div>
+        <div class="mb-4 text-center word-space-3" id="booking-number">No upcoming bookings at this moment!</div>
         <% if (listing.bookingStatus == "open") { %>
             <div class="alert alert-success fs-5 fw-bold text-center py-2 mb-1" role="alert">
                 Bookings &nbsp;Are &nbsp;Open!
@@ -47,18 +47,59 @@
                 Bookings &nbsp;Are &nbsp;Closed!
             </div>
         <% } %>
+
+        <% if (currUser && userListingBookings.length > 0) { %>
+            <div class="mt-5">
+                <h5 class="fw-bold mb-4 text-decoration-underline" style="color: #22668D; word-spacing: 5px;">Here are your upcoming bookings for <%= listing.title %></h5>
+                <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+                    <% userListingBookings.sort((a,b)=> new Date(a.date)-new Date(b.date)) %>
+                    <% userListingBookings.forEach(booking => { %>
+                        <div class="card">
+                            <div class="py-2 px-3 d-flex justify-content-between rounded-top-4" style="background-color: #22668D;">
+                                <h6 class="fw-bolder mb-0" style="color: #fff;"><%= new Date(booking.date).toLocaleDateString("en-in") %></h6>
+                                <h6 class="fw-bolder mb-0" style="color: #fff;"><%= new Date(booking.date).toLocaleDateString('en-IN',{weekday:'long'}) %></h6>
+                            </div>
+                            <div class="card-body mb-4 rounded-bottom-4 bg-light" style="border: 2px solid #22668D;">
+                                <p class="card-text mb-1 fw-semibold" style="color: #22668D;">Check-in : 9:00 AM %></p>
+                                <!-- Calculate Checkout Time (Next day, same time) -->
+                                <% 
+                                const checkoutDate = new Date(booking.date);
+                                checkoutDate.setDate(checkoutDate.getDate() + 1); // Add one day to booking date
+                                %>
+                                <p class="class-text mb-1 fw-semibold" style="color: #22668D;">Checkout : <%= checkoutDate.toLocaleDateString("en-IN") %> at 9:00 AM</p>
+                                <% if (new Date(booking.date) < new Date()) { %>
+                                    <p class="card-text mb-1 fw-bold text-dark">Status : Completed</p>
+                                <% } else {   %>
+                                    <p class="card-text mb-1 fw-bold text-success">Status : Confirmed</p>
+                                <% } %>  
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        <% } %>
     </div>
+
     <!-- leave new reviews -->
     
         <div class="row mt-5">
             <div class="col border-top">
                 <h2 class="text-center text-dark fw-bold mt-5 text-decoration-underline">Customer &nbsp; Reviews</h2>
-                <div class="col-xl-9 col-lg-10 col-md-11 mx-auto fw-semibold p-4 rounded-4 mt-4 mb-5" style="background-color: #C7C8CC;">
+                <div class="col-xl-7 col-lg-9 col-md-11 mx-auto fw-semibold p-4 rounded-4 mt-4 mb-5 bg-light border">
                     <form action="/listings/<%= listing.id %>/reviews" method="post" novalidate class="needs-validation">
-                        <div>
-                            <label for="rating" class="form-label mb-1">Rate Us :</label>
-                            <input type="range" name="review[rating]" id="rating" min="1" max="5" step="1" class="form-range">
-                        </div>
+                        <fieldset class="starability-growRotate mx-auto">
+                            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" checked value="3" aria-label="No rating." />
+                            <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                            <label for="first-rate1" title="Terrible">1 star</label>
+                            <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                            <label for="first-rate2" title="Not good">2 stars</label>
+                            <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                            <label for="first-rate3" title="Average">3 stars</label>
+                            <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                            <label for="first-rate4" title="Very good">4 stars</label>
+                            <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                            <label for="first-rate5" title="Amazing">5 stars</label>
+                          </fieldset>   
                         <div>
                             <label for="comment" class="form-label mb-1">Comment :</label>
                             <textarea name="review[comment]" id="comment" class="form-control" rows="3" maxlength="180" required></textarea>
@@ -77,8 +118,12 @@
         <% listing.reviews.forEach(review => { %>
             <div class="col">
                 <div class="p-3 mb-4 bg-light border rounded-4 position-relative" style="height: 90%;">
-                    <p><i class="fa-regular fa-xl fa-circle-user me-2" style="color: #787878;"></i><span class="fw-semibold"><%= review.author.username %></span></p>
-                    <p class="mb-1"><%= review.rating %></p>
+                    <p class=" mb-1"><i class="fa-regular fa-xl fa-circle-user me-2" style="color: #787878;"></i><span class="fw-semibold"><%= review.author.username %></span></p>
+                    <p class="mb-1 fs-5">
+                        <% for( let i = 0; i < review.rating; i++ ) { %>
+                            &#x2605;&nbsp;
+                        <% } %>
+                    </p>
                     <p class="mb-1"><%= review.comment %></p>
                     <div class="d-flex position-absolute bottom-0 end-0">
                         <% if (currUser && currUser._id.equals(review.author._id)) { %>

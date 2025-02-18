@@ -6,7 +6,7 @@
 }
 
 :root {
-    --primary-color: #0F1035;
+    --primary-color: #161851;
     --secondary-color: #22668D;
     --tertiary-color: #ffc107;
     --light-y-color: #FFFADD;
@@ -17,20 +17,20 @@
     position: fixed;
     top: 0;
     width: 0;
-    background-image: url('../assets/bg15.jpg');
+    background-image: url('../assets/bg13.jpg');
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
     z-index: -100;
     background-size: cover;
-    filter: blur(2px);
+    filter: brightness(0.85);
 }
 .index .card{
     background-color: transparent;
 }
 .index .card-body{
     background-color:rgba(0,0,0,0.4); 
-    color: #fff;;
+    color: white;
 }
 .navbar-brand {
     color: var(--secondary-color);
@@ -111,7 +111,7 @@
     left: 0;
     height: 17rem;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -122,7 +122,7 @@
 }
 .listing-card-overlay:hover {
     opacity: 1;
-    box-shadow: 0 0 4px white;
+    /* box-shadow: 0 0 4px white; */
 }
 .index .card-img-top {
     height: 17rem;
@@ -235,7 +235,7 @@
     cursor: pointer;
 }
 .fc-daygrid-day-frame:hover{
-    background-color: #8ecddd97;
+    background-color: var(--light-b-color);
 }
 .fc-daygrid-day-number{
     text-decoration: none;
@@ -265,16 +265,16 @@
     font-size: 0.9rem;
 }
 .fc-col-header{
-    background-color: #8ecddd97;
+    background-color: var(--light-b-color);
 }
 .fc-theme-standard td, .fc-theme-standard th {
-    border: 2px solid #3191c994;
+    border: 2px solid #22668D;
     background-color: transparent;
 
 }
 .fc-theme-standard .fc-scrollgrid{
-    border-top: 2px solid #3191c994;
-    border-left: 2px solid #3191c994;
+    border-top: 2px solid #22668D;
+    border-left: 2px solid #22668D;
     background-color: transparent;
 }
 .fc-day-other{
@@ -312,9 +312,10 @@
 
 #booking-number{
     font-weight: 600;
-    color: var(--secondary-color);
+    color: #222222;
+    background-color: #e1e1e1;
     font-size: 1.1rem;
-    word-spacing: 0.3rem;
+    word-spacing: 0.35rem;
     text-transform: capitalize;
 }
 .error-icon{

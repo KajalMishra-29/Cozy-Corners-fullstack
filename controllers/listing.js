@@ -1,4 +1,5 @@
 const Listing = require("../models/listing");
+const User = require("../models/user");
 
 module.exports.index = async (req, res, next) => {
     const allListings = await Listing.find({});
@@ -17,11 +18,19 @@ module.exports.showListing = async (req, res, next) => {
             }
         })
         .populate("owner");
+
+    // bookings for the listing of current user
+    let userListingBookings = [];
+    if (req.user) {
+        let user = await User.findById(req.user._id).populate("bookings");
+        let userBookings = user.bookings;
+        userListingBookings = userBookings.filter(booking => booking.listing == id);
+    }
     if (!listing) {
         req.flash("error", "Listing you requested for does not exist!");
         return res.redirect("/listings");
     }
-    res.render("listings/show.ejs", { listing });
+    res.render("listings/show.ejs", { listing, userListingBookings });
 }
 module.exports.createListing = async (req, res, next) => {
     const newListing = new Listing(req.body.listing);

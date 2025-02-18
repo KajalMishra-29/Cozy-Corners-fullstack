@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
         bookedDates.forEach(date => {
             let elements = document.querySelectorAll(`[data-date='${date}']`);
             elements.forEach(el => {
-                console.log(el)
                 el.style.backgroundColor = "#cccccc";
             });
         });
@@ -56,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function () {
             let cellDate = info.date;
             cellDate.setHours(0, 0, 0, 0);
             if (cellDate < today) {
-                info.el.style.backgroundColor = "#eeeeee";;
-                info.el.style.opacity = "0.7";
+                info.el.style.pointerEvents = "none";
+                info.el.style.opacity = "0.6";
             }
         },
         // listen for calendar view change
