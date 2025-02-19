@@ -78,6 +78,10 @@ CozyCorners follows the Model-View-Controller (MVC) architectural pattern:
   - Session-based date selection before booking confirmation.
   - Booked dates are disabled in the UI.
 
+- **Image Upload & Storage** :
+  - `Multer` handles `multipart/form-data uploads`.
+  - `Cloudinary` is used for cloud-based image storage.
+  - Image URLs from Cloudinary are stored in MongoDB under the Listing model.
 - **Client-Side and Server-Side Validation** :
   - Bootstrap's built-in validation for client-side.
   - `Joi` schema validation for server-side.
