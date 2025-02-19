@@ -83,8 +83,8 @@ CozyCorners follows the Model-View-Controller (MVC) architectural pattern:
   - `Cloudinary` is used for cloud-based image storage.
   - Image URLs from Cloudinary are stored in MongoDB under the Listing model.
 - **Client-Side and Server-Side Validation** :
-  - Bootstrap's built-in validation for client-side.
-  - `Joi` schema validation for server-side.
+- Bootstrap's built-in validation for client-side.
+- `Joi` schema validation for server-side.
 - **Authorization & Authentication** :
   - `Passport.js` for user authentication.
   - Role-based access control.
