@@ -1,12 +1,8 @@
 // loads backgorund image and content simultaneously
 window.addEventListener('load', () => {
-    document.querySelector(".edit").classList.add('loaded')
-})
-window.addEventListener('load', () => {
-    document.querySelector(".new").classList.add('loaded');
-})
-window.addEventListener('load', () => {
-    document.querySelector(".index").classList.add('loaded');
+    document.querySelectorAll(".edit, .new, .home").forEach(el => {
+        el.classList.add('loaded');
+    })
 })
 
 // password display

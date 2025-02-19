@@ -5,10 +5,15 @@ const Listing = require("../models/listing");
 const { validateListing, isLoggedIn, isOwner } = require("../middleware");
 const listingController = require("../controllers/listing");
 
-// index
-router.get("/",
-    wrapAsync(listingController.index)
-);
+const multer = require('multer');
+const upload = multer({ dest: '/uploads' });
+
+router
+    .route("/")
+    .get(wrapAsync(listingController.index)) // index route
+    .post(validateListing,                   // create new listing
+        wrapAsync(listingController.createListing)
+    )
 
 // new form
 router.get("/new",
@@ -16,16 +21,18 @@ router.get("/new",
     listingController.renderNewForm
 );
 
-// show
-router.get("/:id",
-    wrapAsync(listingController.showListing)
-);
-
-// create new listing
-router.post("/",
-    validateListing,
-    wrapAsync(listingController.createListing)
-);
+router
+    .route("/:id")
+    .get(wrapAsync(listingController.showListing)) // show
+    .patch(isLoggedIn,                      // edit listing
+        isOwner,
+        validateListing,
+        wrapAsync(listingController.updateListing)
+    )
+    .delete(isLoggedIn,                     // delete
+        isOwner,
+        wrapAsync(listingController.deleteListing)
+    )
 
 // update form
 router.get("/:id/edit",
@@ -34,19 +41,5 @@ router.get("/:id/edit",
     wrapAsync(listingController.updateForm)
 );
 
-// edit listing
-router.patch("/:id",
-    isLoggedIn,
-    isOwner,
-    validateListing,
-    wrapAsync(listingController.updateListing)
-);
-
-// delete
-router.delete("/:id",
-    isLoggedIn,
-    isOwner,
-    wrapAsync(listingController.deleteListing)
-)
-
+router
 module.exports = router;

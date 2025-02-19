@@ -12,11 +12,11 @@
     --light-y-color: #FFFADD;
     --light-b-color: #8ECDDD;
 }
-.index::before{
+.home::before{
     content: "";
     position: fixed;
     top: 0;
-    width: 0;
+    left: 0;
     background-image: url('../assets/bg13.jpg');
     background-repeat: no-repeat;
     height: 100%;
@@ -29,8 +29,30 @@
     background-color: transparent;
 }
 .index .card-body{
-    background-color:rgba(0,0,0,0.4); 
-    color: white;
+    color: var(--secondary-color);
+    background-color:#CDF5FD;
+    border: 2px solid #22668D;
+}
+.listing-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 17rem;
+    width: 100%;
+    background-color: rgba(225, 225, 225, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    opacity: 0;
+    transition: all 0.2s ease-in;
+}
+.listing-card-overlay:hover {
+    opacity: 1;
+}
+.index .card-img-top {
+    height: 17rem;
 }
 .navbar-brand {
     color: var(--secondary-color);
@@ -104,28 +126,6 @@
 }
 .card {
     border: none;
-}
-.listing-card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 17rem;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    opacity: 0;
-    transition: all 0.2s ease-in;
-}
-.listing-card-overlay:hover {
-    opacity: 1;
-    /* box-shadow: 0 0 4px white; */
-}
-.index .card-img-top {
-    height: 17rem;
 }
 .card-body {
     color: black;
@@ -217,7 +217,7 @@
     background-color: inherit;
     border: 2px solid var(--secondary-color);
 }
-.edit, .new, .index{
+.edit, .new, .home{
     display: none;
 }
 .loaded{

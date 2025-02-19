@@ -3,7 +3,7 @@
     <div class="col-xl-9 col-lg-10 col-md-11 mx-auto">
         <h1 class="text-center fw-bold mt-4" style="color: #fff; word-spacing: 0.5rem;">Create new Listing</h1>
         <div class="mt-4 mb-5 border rounded-4 p-xl-4 p-4 box">
-            <form action="/listings" method="post" novalidate class="needs-validation">
+            <form action="/listings" method="post" novalidate class="needs-validation" enctype="multipart/form-data">
                 <div class="mb-4">
                     <label for="title" class="form-label mb-1">Enter a catchy title :</label>
                     <input type="text" name="listing[title]" id="title"  class="form-control" placeholder="Mountain Retreat" required>
@@ -19,8 +19,8 @@
                     </div>
                 </div>
                 <div class="mb-4">
-                    <label for="image" class="form-label mb-1">Image URL :</label>
-                    <input type="text" name="listing[image]" id="image" class="form-control">
+                    <label for="image" class="form-label mb-1">Upload Image :</label>
+                    <input type="file" name="listing[image]" id="image" class="form-control">
                 </div>
                 <div class="mb-4">
                     <label for="price" class="form-label mb-1">Enter price :</label>
