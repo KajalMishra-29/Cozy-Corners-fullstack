@@ -5,14 +5,17 @@ const Listing = require("../models/listing");
 const { validateListing, isLoggedIn, isOwner } = require("../middleware");
 const listingController = require("../controllers/listing");
 
+const { storage } = require("../cloudConfig");
 const multer = require('multer');
-const upload = multer({ dest: '/uploads' });
+const upload = multer({ storage });
 
+// index route
+// create new listing
 router
     .route("/")
-    .get(wrapAsync(listingController.index)) // index route
-    .post(upload.single('listing[image]'), // create new listing
-        isLoggedIn,
+    .get(wrapAsync(listingController.index))
+    .post(isLoggedIn,
+        upload.single("listing[image]"),
         validateListing,
         wrapAsync(listingController.createListing)
     )
@@ -23,15 +26,19 @@ router.get("/new",
     listingController.renderNewForm
 );
 
+// show
+// edit listing
+// delete
 router
     .route("/:id")
-    .get(wrapAsync(listingController.showListing)) // show
-    .patch(isLoggedIn,                      // edit listing
+    .get(wrapAsync(listingController.showListing))
+    .patch(isLoggedIn,
         isOwner,
+        upload.single("listing[image]"),
         validateListing,
         wrapAsync(listingController.updateListing)
     )
-    .delete(isLoggedIn,                     // delete
+    .delete(isLoggedIn,
         isOwner,
         wrapAsync(listingController.deleteListing)
     )

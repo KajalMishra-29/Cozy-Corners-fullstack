@@ -14,14 +14,14 @@
     <div class="row">
         <div class="col-xl-6 col-lg-8 col-md-9 pe-xl-5 mx-auto mb-xl-0 mb-5">
             <div class="card mx-auto">
-                <img src="<%= listing.image %>" class="card-img-top rounded-3" alt="...">
+                <img src="<%= listing.image.url %>" class="card-img-top rounded-3" alt="...">
                 <p class="mt-2"><i>Owned by : <span class="fw-semibold"><%= listing.owner.username %></span></i></p>
                 <div class="card-body pb-0">
                     <h4 class="fw-bold" style="color: #22668D; word-spacing: 5px;"><%= listing.title %></h4>
                   <p><%= listing.description %></p>
                   <p><p>&#8377; <%= listing.price.toLocaleString("en-in") %> /night</p>
-                  <p><%= listing.location %></p>
-                  <p><%= listing.country %></p>
+                  <p class="mb-1"><%= listing.location %></p>
+                  <p class="mb-1"><%= listing.country %></p>
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@
                 Bookings &nbsp;Are &nbsp;Closed!
             </div>
         <% } %>
-
+        
         <% if (currUser && userListingBookings.length > 0) { %>
             <div class="mt-5">
                 <h5 class="fw-bold mb-4 text-decoration-underline" style="color: #22668D; word-spacing: 5px;">Here are your upcoming bookings for <%= listing.title %></h5>
@@ -79,7 +79,9 @@
             </div>
         <% } %>
     </div>
-
+    <div class="row">
+        <div id="map"></div>
+    </div>
     <!-- leave new reviews -->
     
         <div class="row mt-5">

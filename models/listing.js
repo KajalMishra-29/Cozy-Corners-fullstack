@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Review = require("./review");
+const { cloudinary } = require("../cloudConfig");
 
 const listingSchema = new mongoose.Schema({
     title: {
@@ -11,9 +12,11 @@ const listingSchema = new mongoose.Schema({
         required: true
     },
     image: {
-        type: String,
-        default: "https://i.pinimg.com/736x/2f/f3/3b/2ff33b593016e5407cc26848ce6a3c35.jpg",
-        set: (v) => v === "" ? "https://i.pinimg.com/736x/2f/f3/3b/2ff33b593016e5407cc26848ce6a3c35.jpg" : v
+        url: {
+            type: String,
+            default: "https://i.pinimg.com/736x/2f/f3/3b/2ff33b593016e5407cc26848ce6a3c35.jpg",
+
+        }, filename: String
     },
     price: {
         type: Number,
@@ -54,6 +57,9 @@ const listingSchema = new mongoose.Schema({
 listingSchema.post("findOneAndDelete", async (listing) => {
     if (listing) {
         await Review.deleteMany({ _id: { $in: listing.reviews } });
+    }
+    if (listing && listing.image.filename) {
+        await cloudinary.uploader.destroy(listing.image.filename);
     }
 })
 

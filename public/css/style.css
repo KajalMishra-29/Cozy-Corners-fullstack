@@ -12,21 +12,9 @@
     --light-y-color: #FFFADD;
     --light-b-color: #8ECDDD;
 }
-.home::before{
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-image: url('../assets/bg13.jpg');
-    background-repeat: no-repeat;
-    height: 100%;
-    width: 100%;
-    z-index: -100;
-    background-size: cover;
-    filter: brightness(0.85);
-}
 .index .card{
     background-color: transparent;
+    box-shadow: 0 0 10px #898989;
 }
 .index .card-body{
     color: var(--secondary-color);
@@ -39,7 +27,9 @@
     left: 0;
     height: 17rem;
     width: 100%;
-    background-color: rgba(225, 225, 225, 0.3);
+    background-color: #8ecddd3e;
+    border: 2px solid #22668D;
+    border-bottom: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -121,9 +111,6 @@
 .f-info-social i:hover {
     color: rgba(0, 0, 0, 0.9);
 }
-.listing-card {
-    text-decoration: none;
-}
 .card {
     border: none;
 }
@@ -131,7 +118,7 @@
     color: black;
 }
 .show .card-img-top{
-    height: 20rem;
+    height: 22rem;
 }
 .btn-blue-outline {
     background-color: #fff;
@@ -217,7 +204,7 @@
     background-color: inherit;
     border: 2px solid var(--secondary-color);
 }
-.edit, .new, .home{
+.edit, .new{
     display: none;
 }
 .loaded{
