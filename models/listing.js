@@ -1,16 +1,11 @@
 const mongoose = require("mongoose");
 const Review = require("./review");
 const { cloudinary } = require("../cloudConfig");
+const { array } = require("joi");
 
 const listingSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    description: {
-        type: String,
-        required: true
-    },
+    title: { type: String, required: true },
+    description: { type: String, required: true },
     image: {
         url: {
             type: String,
@@ -18,18 +13,11 @@ const listingSchema = new mongoose.Schema({
 
         }, filename: String
     },
-    price: {
-        type: Number,
-        required: true
-    },
-    location: {
-        type: String,
-        required: true
-    },
-    country: {
-        type: String,
-        required: true
-    },
+    price: { type: Number, required: true },
+    city: { type: String, required: true },
+    state: { type: String, required: true },
+    country: { type: String, required: true },
+    address: { type: String, required: true },
     reviews: [
         {
             type: mongoose.Schema.Types.ObjectId,
@@ -50,12 +38,16 @@ const listingSchema = new mongoose.Schema({
         type: String,
         enum: ['open', 'close'],
         default: 'open'
+    },
+    coordinates: {
+        latitude: Number,
+        longitude: Number
     }
 })
 
 // Middleware to delete associated reviews when a listing is deleted
 listingSchema.post("findOneAndDelete", async (listing) => {
-    if (listing) {
+    if (listing && listing.reviews.length > 0) {
         await Review.deleteMany({ _id: { $in: listing.reviews } });
     }
     if (listing && listing.image.filename) {

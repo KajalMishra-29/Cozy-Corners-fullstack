@@ -20,31 +20,47 @@
                         </div>
                     </div>
                     <div class="mb-4">
-                        <img src="<%= imageURL %>" alt="..." class="rounded-4 mb-3"><br>
+                        <img src="<%= imageURL %>" alt="..." class="rounded-4 mb-3" height="230px" width="350px"><br>
                         <label for="image" class="form-label mb-1">Upload new Image :</label>
                         <input type="file" name="listing[image]" id="image" class="form-control">
                     </div>
-                    <div class="mb-4">
-                        <label for="price" class="form-label mb-1">Price :</label>
-                        <input type="number" name="listing[price]" id="price" class="form-control" value="<%= listing.price %>" required>
-                        <div class="invalid-feedback">
-                            Price is required.
+                    <div class="row">
+                        <div class="col-xl-6 mb-4">
+                            <label for="price" class="form-label mb-1">Price :</label>
+                            <input type="number" name="listing[price]" id="price" class="form-control" value="<%= listing.price %>" required>
+                            <div class="invalid-feedback">
+                                Price is required.
+                            </div>
+                        </div>
+                        <div class="col-xl-6 mb-4">
+                            <label for="city" class="form-label mb-1">City :</label>
+                            <input type="text" name="listing[city]" id="city" class="form-control" value="<%= listing.city %>" required>
+                            <div class="invalid-feedback">
+                                city is required.
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xl-6 mb-4">
-                            <label for="country" class="form-label mb-1">Country :</label>
-                            <input type="text" name="listing[country]" id="country" class="form-control" value="<%= listing.country %>" required>
+                            <label for="state" class="form-label mb-1">State :</label>
+                            <input type="text" name="listing[state]" id="state" class="form-control" value="<%= listing.state %>" required>
                             <div class="invalid-feedback">
-                                Country is required.
+                                state is required.
                             </div>
                         </div>
                         <div class="col-xl-6 mb-4">
-                            <label for="location" class="form-label mb-1">Location :</label>
-                            <input type="text" name="listing[location]" id="location" class="form-control" value="<%= listing.location %>" required>
+                            <label for="country" class="form-label mb-1">Country :</label>
+                            <input type="text" name="listing[country]" id="country" class="form-control" value="<%= listing.country %>" required>
                             <div class="invalid-feedback">
-                                Location is required.
+                                country is required.
                             </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="address" class="form-label mb-1">Address :</label>
+                        <input type="text" name="listing[address]" id="address"  class="form-control" value="<%= listing.address %>" required>
+                        <div class="invalid-feedback">
+                            address is required.
                         </div>
                     </div>
                     <button class="btn btn-blue fw-semibold">Update changes</button>

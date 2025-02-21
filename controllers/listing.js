@@ -18,7 +18,7 @@ module.exports.showListing = async (req, res, next) => {
             }
         })
         .populate("owner");
-
+    console.log(listing)
     // bookings for the listing of current user
     let userListingBookings = [];
     if (req.user) {

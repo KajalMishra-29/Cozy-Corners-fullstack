@@ -9,4 +9,14 @@
     #map{height: 24rem;}
 }
 
-
+.mapboxgl-popup {
+    min-width: 200px;
+}
+#menu{
+    background-color: #8ECDDD;
+    padding: 0.3rem;
+}
+#menu label{
+    color: #161851;
+    font-weight: bold;
+}

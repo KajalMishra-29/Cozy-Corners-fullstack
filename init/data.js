@@ -8,8 +8,10 @@ const sampleListings = [
             filename: "",
         },
         price: 1500,
-        location: "Malibu",
-        country: "United States",
+        city: "Jaipur",
+        state: "Rajasthan",
+        country: "India",
+        address: "22 Hawa Mahal Rd, Jaipur, RJ 302002"
     },
     {
         title: "Modern Loft in Downtown",
@@ -20,8 +22,10 @@ const sampleListings = [
             filename: "",
         },
         price: 1200,
-        location: "New York City",
+        city: "New York city",
+        state: "New York",
         country: "United States",
+        address: "456 Downtown St, New York, NY 10001"
     },
     {
         title: "Mountain Retreat",
@@ -32,8 +36,10 @@ const sampleListings = [
             filename: ""
         },
         price: 1000,
-        location: "Aspen",
+        city: "Aspen",
+        state: "Colorado",
         country: "United States",
+        address: "789 Mountain Rd, Aspen, CO 81611"
     },
     {
         title: "Historic Villa in Tuscany",
@@ -44,8 +50,10 @@ const sampleListings = [
             filename: ""
         },
         price: 2500,
-        location: "Florence",
+        city: "Florence",
+        state: "Tuscany",
         country: "Italy",
+        address: "Via della Villa 12, Florence, Tuscany 50123"
     },
     {
         title: "Secluded Treehouse Getaway",
@@ -56,8 +64,10 @@ const sampleListings = [
             filename: ""
         },
         price: 800,
-        location: "Portland",
+        city: "Portland",
+        state: "Oregon",
         country: "United States",
+        address: "321 Treehouse Ln, Portland, OR 97201"
     },
     {
         title: "Beachfront Paradise",
@@ -68,8 +78,10 @@ const sampleListings = [
             filename: ""
         },
         price: 2000,
-        location: "Cancun",
-        country: "Mexico",
+        city: "Thiruvananthapuram",
+        state: "Kerala",
+        country: "India",
+        address: "55 MG Road, Thiruvananthapuram, KL 695001"
     },
     {
         title: "Rustic Cabin by the Lake",
@@ -80,8 +92,10 @@ const sampleListings = [
             filename: ""
         },
         price: 900,
-        location: "Lake Tahoe",
+        city: "South Lake Tahoe",
+        state: "California",
         country: "United States",
+        address: "890 Lakeview Rd, South Lake Tahoe, CA 96150"
     },
     {
         title: "Luxury Penthouse with City Views",
@@ -92,8 +106,10 @@ const sampleListings = [
             filename: ""
         },
         price: 3500,
-        location: "Los Angeles",
-        country: "United States",
+        city: "Dubai",
+        state: "Dubai",
+        country: "United Arab Emirates",
+        address: "101 Skyline Tower, Dubai Marina, UAE"
     },
     {
         title: "Ski-In/Ski-Out Chalet",
@@ -104,8 +120,10 @@ const sampleListings = [
             filename: ""
         },
         price: 3000,
-        location: "Verbier",
-        country: "Switzerland",
+        city: "Guwahati",
+        state: "Assam",
+        country: "India",
+        address: "12 Fancy Bazar, Guwahati, AS 781001"
     },
     {
         title: "Safari Lodge in the Serengeti",
@@ -116,8 +134,10 @@ const sampleListings = [
             filename: ""
         },
         price: 4000,
-        location: "Serengeti National Park",
-        country: "Tanzania",
+        city: "Paris",
+        state: "Île-de-France",
+        country: "France",
+        address: "10 Rue de Rivoli, Paris 75004"
     },
     {
         title: "Historic Canal House",
@@ -128,8 +148,10 @@ const sampleListings = [
             filename: ""
         },
         price: 1800,
-        location: "Amsterdam",
+        city: "Amsterdam",
+        state: "North Holland",
         country: "Netherlands",
+        address: "6 Canal Dock, Amsterdam 1013"
     },
     {
         title: "Private Island Retreat",
@@ -140,8 +162,10 @@ const sampleListings = [
             filename: ""
         },
         price: 10000,
-        location: "Fiji",
-        country: "Fiji",
+        city: "Ubud",
+        state: "Bali",
+        country: "Indonesia",
+        address: "77 Beach Rd, Ubud, Bali 80571"
     },
     {
         title: "Charming Cottage in the Cotswolds",
@@ -152,8 +176,10 @@ const sampleListings = [
             filename: ""
         },
         price: 1200,
-        location: "Cotswolds",
+        city: "Chipping Campden",
+        state: "Gloucestershire",
         country: "United Kingdom",
+        address: "22 Rose Lane, Chipping Campden, GL55 6AY"
     },
     {
         title: "Historic Brownstone in Boston",
@@ -164,8 +190,10 @@ const sampleListings = [
             filename: ""
         },
         price: 2200,
-        location: "Boston",
-        country: "United States",
+        city: "Cape Town",
+        state: "Western Cape",
+        country: "South Africa",
+        address: "33 Table Mountain Rd, Cape Town 8001"
     },
     {
         title: "Beachfront Bungalow in Bali",
@@ -176,8 +204,10 @@ const sampleListings = [
             filename: ""
         },
         price: 1800,
-        location: "Bali",
-        country: "Indonesia",
+        city: "London",
+        state: "England",
+        country: "United Kingdom",
+        address: "22 Baker St, London W1U 8EX"
     },
     {
         title: "Mountain View Cabin in Banff",
@@ -188,8 +218,10 @@ const sampleListings = [
             filename: ""
         },
         price: 1500,
-        location: "Banff",
-        country: "Canada",
+        city: "Sydney",
+        state: "New South Wales",
+        country: "Australia",
+        address: "100 Harbour Rd, Sydney NSW 2000"
     },
     {
         title: "Art Deco Apartment in Miami",
@@ -200,8 +232,10 @@ const sampleListings = [
             filename: ""
         },
         price: 1600,
-        location: "Miami",
-        country: "United States",
+        city: "Paris",
+        state: "Île-de-France",
+        country: "France",
+        address: "15 Rue de Rivoli, Paris 75004"
     },
     {
         title: "Tropical Villa in Phuket",
@@ -212,8 +246,10 @@ const sampleListings = [
             filename: ""
         },
         price: 3000,
-        location: "Phuket",
-        country: "Thailand",
+        city: "Cape Town",
+        state: "Western Cape",
+        country: "South Africa",
+        address: "33 Table Mountain Rd, Cape Town 8001"
     },
     {
         title: "Historic Castle in Scotland",
@@ -224,8 +260,10 @@ const sampleListings = [
             filename: ""
         },
         price: 4000,
-        location: "Scottish Highlands",
-        country: "United Kingdom",
+        city: "Mumbai",
+        state: "Maharashtra",
+        country: "India",
+        address: "77 Marine Drive, Mumbai, MH 400020"
     },
     {
         title: "Desert Oasis in Dubai",
@@ -236,8 +274,10 @@ const sampleListings = [
             filename: ""
         },
         price: 5000,
-        location: "Dubai",
-        country: "United Arab Emirates",
+        city: "Seoul",
+        state: "Seoul",
+        country: "South Korea",
+        address: "88 Gangnam Ave, Seoul 06089"
     },
     {
         title: "Rustic Log Cabin in Montana",
@@ -248,8 +288,10 @@ const sampleListings = [
             filename: ""
         },
         price: 1100,
-        location: "Montana",
-        country: "United States",
+        city: "Mumbai",
+        state: "Maharashtra",
+        country: "India",
+        address: "77 Marine Drive, Mumbai, MH 400020"
     },
     {
         title: "Beachfront Villa in Greece",
@@ -260,8 +302,10 @@ const sampleListings = [
             filename: ""
         },
         price: 2500,
-        location: "Mykonos",
-        country: "Greece",
+        city: "Cape Town",
+        state: "Western Cape",
+        country: "South Africa",
+        address: "33 Table Mountain Rd, Cape Town 8001"
     },
     {
         title: "Eco-Friendly Treehouse Retreat",
@@ -272,8 +316,10 @@ const sampleListings = [
             filename: ""
         },
         price: 750,
-        location: "Costa Rica",
-        country: "Costa Rica",
+        city: "Paris",
+        state: "Île-de-France",
+        country: "France",
+        address: "10 Rue de Rivoli, Paris 75004"
     },
     {
         title: "Historic Cottage in Charleston",
@@ -284,8 +330,10 @@ const sampleListings = [
             filename: ""
         },
         price: 1600,
-        location: "Charleston",
-        country: "United States",
+        city: "Buenos Aires",
+        state: "Buenos Aires",
+        country: "Argentina",
+        address: "55 Florida St, Buenos Aires C1005"
     },
     {
         title: "Modern Apartment in Tokyo",
@@ -296,8 +344,10 @@ const sampleListings = [
             filename: ""
         },
         price: 2000,
-        location: "Tokyo",
-        country: "Japan",
+        city: "Bengaluru",
+        state: "Karnataka",
+        country: "India",
+        address: "42 MG Road, Bengaluru, KA 560001"
     },
     {
         title: "Lakefront Cabin in New Hampshire",
@@ -308,8 +358,10 @@ const sampleListings = [
             filename: ""
         },
         price: 1200,
-        location: "New Hampshire",
-        country: "United States",
+        city: "Chennai",
+        state: "Tamil Nadu",
+        country: "India",
+        address: "24 Marina Beach Rd, Chennai, TN 600001"
     },
     {
         title: "Luxury Villa in the Maldives",
@@ -320,8 +372,10 @@ const sampleListings = [
             filename: ""
         },
         price: 6000,
-        location: "Maldives",
-        country: "Maldives",
+        city: "Kolkata",
+        state: "West Bengal",
+        country: "India",
+        address: "15 Park Street, Kolkata, WB 700016"
     },
     {
         title: "Ski Chalet in Aspen",
@@ -332,8 +386,10 @@ const sampleListings = [
             filename: ""
         },
         price: 4000,
-        location: "Aspen",
-        country: "United States",
+        city: "Hyderabad",
+        state: "Telangana",
+        country: "India",
+        address: "89 Banjara Hills, Hyderabad, TG 500034"
     },
     {
         title: "Secluded Beach House in Costa Rica",
@@ -344,8 +400,10 @@ const sampleListings = [
             filename: ""
         },
         price: 1800,
-        location: "Costa Rica",
-        country: "Costa Rica",
+        city: "Pune",
+        state: "Maharashtra",
+        country: "India",
+        address: "100 FC Road, Pune, MH 411005"
     },
 ];
 

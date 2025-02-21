@@ -1,4 +1,11 @@
 <% layout("/layouts/boilerplate") %>
+<script>
+    const mapToken = "<%= process.env.MAP_TOKEN%>"
+    const city = "<%= listing.city %>"
+    const state = "<%= listing.state %>"
+    const country = "<%= listing.country %>"
+</script>
+
 <body class="show">
     <div class="row mb-4 mt-3">
         <% if (currUser && currUser._id.equals(listing.owner._id)) { %>
@@ -19,9 +26,10 @@
                 <div class="card-body pb-0">
                     <h4 class="fw-bold" style="color: #22668D; word-spacing: 5px;"><%= listing.title %></h4>
                   <p><%= listing.description %></p>
-                  <p><p>&#8377; <%= listing.price.toLocaleString("en-in") %> /night</p>
-                  <p class="mb-1"><%= listing.location %></p>
+                  <p><span class="border-bottom border-dark">&#8377; <%= listing.price.toLocaleString("en-in") %> /night &nbsp;</span></p>
+                  <p class="mb-1"><%= listing.city %>, <%= listing.state %></p>
                   <p class="mb-1"><%= listing.country %></p>
+                  <p class="mb-1"><%= listing.address %></p>
                 </div>
             </div>
         </div>
@@ -37,7 +45,7 @@
         </div>
     </div>
     <div class="row mt-4">
-        <div class="mb-4 text-center word-space-3" id="booking-number">No upcoming bookings at this moment!</div>
+        <div class="mb-2 text-center word-space-3" id="booking-number">No upcoming bookings at this moment!</div>
         <% if (listing.bookingStatus == "open") { %>
             <div class="alert alert-success fs-5 fw-bold text-center py-2 mb-1" role="alert">
                 Bookings &nbsp;Are &nbsp;Open!
@@ -79,11 +87,28 @@
             </div>
         <% } %>
     </div>
-    <div class="row">
-        <div id="map"></div>
+    <!-- maps -->
+    <div class="row mt-5">
+        <div class="col-xl-9 col-lg-10 mx-auto">
+            <% if (!listing.coordinates || !listing.coordinates.latitude || !listing.coordinates.longitude) { %>
+                <h5>Exact location has not been updated yet!</h5>            
+                <% } %>
+            <div id="map"></div>
+            <div id="menu">
+                <input id="streets-v12" type="radio" name="rtoggle" value="streets"  checked="checked">
+                <label for="streets-v12" class="me-3">streets</label>
+                <input id="satellite-streets-v12" type="radio" name="rtoggle" value="satellite">
+                <label for="satellite-streets-v12" class="me-3">satellite streets</label>
+                <input id="outdoors-v12" type="radio" name="rtoggle" value="outdoors">
+                <label for="outdoors-v12" class="me-3">outdoors</label>
+                <input id="light-v11" type="radio" name="rtoggle" value="light">
+                <label for="light-v11" class="me-3">light</label>
+                <input id="dark-v11" type="radio" name="rtoggle" value="dark">
+                <label for="dark-v11" class="me-3">dark</label>
+            </div>
+        </div>
     </div>
     <!-- leave new reviews -->
-    
         <div class="row mt-5">
             <div class="col border-top">
                 <h2 class="text-center text-dark fw-bold mt-5 text-decoration-underline">Customer &nbsp; Reviews</h2>
@@ -139,4 +164,3 @@
         <% }) %>
     </div>
 </body>
-
