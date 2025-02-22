@@ -50,5 +50,12 @@ router.get("/:id/edit",
     wrapAsync(listingController.updateForm)
 );
 
-router
+// set map location
+router.get(
+    "/:id/setMapCoordinates",
+    // isLoggedIn,
+    // isOwner,
+    wrapAsync(listingController.renderSetMapLocation)
+)
+router.post("/:id/saveLocation", wrapAsync(listingController.saveLocation));
 module.exports = router;

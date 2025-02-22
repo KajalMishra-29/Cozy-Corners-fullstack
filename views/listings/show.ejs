@@ -1,6 +1,7 @@
 <% layout("/layouts/boilerplate") %>
 <script>
     const mapToken = "<%= process.env.MAP_TOKEN%>"
+    let originalSetCoordinates = <%- JSON.stringify(listing.coordinates) %>
     const city = "<%= listing.city %>"
     const state = "<%= listing.state %>"
     const country = "<%= listing.country %>"
@@ -14,7 +15,8 @@
                 <form action="/listings/<%= listing.id %>?_method=DELETE" method="post">
                     <button class="btn-yellow me-2 px-4 fw-semibold rounded-pill">Delete</button>
                 </form>
-                <a href="/listings/<%= listing.id %>/bookings/bookingStatus" class="btn-blue-outline rounded-pill">Change Booking Status</a>   
+                <a href="/listings/<%= listing.id %>/bookings/bookingStatus" class="btn-blue-outline rounded-pill me-2">Change Booking Status</a> 
+                <a href="/listings/<%= listing.id %>/setMapCoordinates" class="btn-yellow-outline rounded-pill px-3">Set Location on Map</a>  
             </div>
          <% } %>
     </div>
@@ -92,7 +94,9 @@
         <div class="col-xl-9 col-lg-10 mx-auto">
             <% if (!listing.coordinates || !listing.coordinates.latitude || !listing.coordinates.longitude) { %>
                 <h5>Exact location has not been updated yet!</h5>            
-                <% } %>
+            <% } else { %>
+                <h5>You will be here!</h5>
+            <% } %>
             <div id="map"></div>
             <div id="menu">
                 <input id="streets-v12" type="radio" name="rtoggle" value="streets"  checked="checked">

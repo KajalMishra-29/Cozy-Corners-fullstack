@@ -1,0 +1,33 @@
+<% layout("/layouts/boilerplate") %>
+<script>
+    const mapToken = "<%= process.env.MAP_TOKEN %>"
+</script>
+<body>
+<div class="row">
+    <div class="fw-bold mt-3 mb-4 fs-4 text-center" style="color: #161851;">Click on the map to select the exact location</div>
+    <form action="/listings/<%= listing._id %>/saveLocation" method="post" class="mb-2">
+        <div class="d-inline-block me-2">
+            <input type="number" step="any" name="coordinates[longitude]" id="longitude" readonly>
+            <input type="number" step="any" name="coordinates[latitude]" id="latitude" readonly>
+        </div>
+        <button class="btn-blue rounded-pill">Save Location</button>
+    </form>
+    <div class="row-cols-xl-9 row-cols-lg-11 col-12 mx-auto">
+        <div id="setMap"></div>
+        <div id="setMap-menu">
+            <input id="streets-v12" type="radio" name="rtoggle" value="streets"  checked="checked">
+            <label for="streets-v12" class="me-3">streets</label>
+            <input id="satellite-streets-v12" type="radio" name="rtoggle" value="satellite">
+            <label for="satellite-streets-v12" class="me-3">satellite streets</label>
+            <input id="outdoors-v12" type="radio" name="rtoggle" value="outdoors">
+            <label for="outdoors-v12" class="me-3">outdoors</label>
+            <input id="light-v11" type="radio" name="rtoggle" value="light">
+            <label for="light-v11" class="me-3">light</label>
+            <input id="dark-v11" type="radio" name="rtoggle" value="dark">
+            <label for="dark-v11" class="me-3">dark</label>
+        </div>
+        <div class="mt-1 fw-medium text-end" style="font-size: 13px; text-decoration: underline;">select any location on globe by dragging and zooming :)</div>
+    </div>
+</div>
+<script src="/js/setMap.js"></script>
+</body>

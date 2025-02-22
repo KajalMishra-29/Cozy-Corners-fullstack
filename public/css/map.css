@@ -16,7 +16,29 @@
     background-color: #8ECDDD;
     padding: 0.3rem;
 }
-#menu label{
+#setMap-menu{
+    background-color: #c2c2c2;
+    padding: 0.3rem;
+}
+#menu label, #setMap-menu label{
     color: #161851;
     font-weight: bold;
+}
+
+/* set locataion map */
+#setMap{
+    height: 34rem;
+    width: 100%;
+}
+@media (max-width: 991.98px) { 
+    #setMap{height: 30rem;}
+}
+@media (max-width: 575.98px) { 
+    #setMap{height: 28rem;}
+}
+#longitude, #latitude {
+    width: 15rem;
+    border-radius: 0.3rem;
+    border: 1px solid #4e4e4e;
+    padding: 0.2rem 0 0.2rem 0.4rem;
 }
