@@ -10,14 +10,22 @@
 <body class="show">
     <div class="row mb-4 mt-3">
         <% if (currUser && currUser._id.equals(listing.owner._id)) { %>
-            <div class="py-2 d-flex align-items-center justify-content-xl-start justify-content-center">
-                <a href="/listings/<%= listing.id %>/edit" class="btn-blue me-2 px-4 fw-semibold rounded-pill">Update</a>
-                <form action="/listings/<%= listing.id %>?_method=DELETE" method="post">
-                    <button class="btn-yellow me-2 px-4 fw-semibold rounded-pill">Delete</button>
-                </form>
-                <a href="/listings/<%= listing.id %>/bookings/bookingStatus" class="btn-blue-outline rounded-pill me-2">Change Booking Status</a> 
-                <a href="/listings/<%= listing.id %>/maps/setMapCoordinates" class="btn-yellow-outline rounded-pill px-3">Set Location on Map</a>  
-            </div>
+            <ul class="nav align-items-center justify-content-xl-start justify-content-center">
+                <li class="nav-item mb-3">
+                  <a href="/listings/<%= listing.id %>/edit" class="btn btn-blue me-2 px-4 fw-semibold rounded-pill">Update</a>
+                </li>
+                <li class="nav-item mb-3">
+                    <form action="/listings/<%= listing.id %>?_method=DELETE" method="post">
+                        <button class="btn-yellow me-2 px-4 fw-semibold rounded-pill">Delete</button>
+                    </form>
+                </li>
+                <li class="nav-item mb-3">
+                    <a href="/listings/<%= listing.id %>/bookings/bookingStatus" class="btn-blue-outline rounded-pill me-2">Change Booking Status</a> 
+                </li>
+                <li class="nav-item mb-3">
+                    <a href="/listings/<%= listing.id %>/maps/setMapCoordinates" class="btn-yellow-outline rounded-pill">Update Location on Map</a>  
+                </li>
+            </ul>
          <% } %>
     </div>
     <div class="row">
@@ -36,13 +44,11 @@
             </div>
         </div>
         <div class="col-xl-6 col-lg-8 col-md-9 mx-auto">
-            <div class="p-4 rounded-4 border position-relative">
-                <div id="calendar-box">
-                    <div id="calendar" class="p-xl-4"></div>
-                    <form action="/listings/<%= listing.id %>/bookings/book" class="ps-xl-4 pt-xl-0 pt-4">
-                        <button class="btn btn-blue" id="bookBtn">Confirm Booking</button>
-                    </form>
-                </div>
+            <div class="p-sm-4 p-0 rounded-4 position-relative" id="calendar-box">
+                <div id="calendar" class="p-xl-4"></div>
+                <form action="/listings/<%= listing.id %>/bookings/book" class="ps-xl-4 pt-xl-0 pt-4">
+                    <button class="btn btn-blue" id="bookBtn">Confirm Booking</button>
+                </form>
             </div>
         </div>
     </div>
@@ -61,7 +67,7 @@
         <% if (currUser && currUserBookings.length > 0) { %>
             <div class="mt-5">
                 <h5 class="fw-bold mb-4 text-decoration-underline" style="color: #22668D; word-spacing: 5px;">Here are your upcoming bookings for <%= listing.title %></h5>
-                <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
                     <% currUserBookings.sort((a,b)=> new Date(a.date)-new Date(b.date)) %>
                     <% currUserBookings.forEach(booking => { %>
                         <div class="card">
@@ -162,7 +168,7 @@
                     <div class="d-flex position-absolute bottom-0 end-0">
                         <% if (currUser && currUser._id.equals(review.author._id)) { %>
                             <form action="/listings/<%= listing.id %>/reviews/<%= review.id %>?_method=DELETE" method="post" class="diplay-inline-block ms-auto">
-                                <button class="btn btn-dark py-1 delete-review-btn">Delete</button>
+                                <button class="btn btn-secondary px-2 py-0">Delete</button>
                             </form>
                         <% } %>
                     </div>

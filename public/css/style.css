@@ -14,7 +14,7 @@
 }
 .index .card{
     background-color: transparent;
-    box-shadow: 0 0 18px #898989;
+    box-shadow: 0 0 18px #bdbdbd;
 }
 .index .card-body{
     color: var(--secondary-color);
@@ -58,13 +58,12 @@
 .navbar-brand:hover {
     color: #185070;
 }
-.nav-link {
+.navigation-underline {
     font-weight: 500;
     position: relative;
     text-decoration: none;
 }
-
-.nav-link::after {
+.navigation-underline::after {
     content: "";
     position: absolute;
     left: 50%;
@@ -75,12 +74,12 @@
     transition: width 0.4s ease-in-out, left 0.4s ease-in-out;
 }
 
-.nav-link:hover::after {
+.navigation-underline:hover::after {
     width: 100%;
     left: 0;
 }
 
-.nav-link:not(:hover)::after {
+.navigation-underline:not(:hover)::after {
     width: 0;
     left: 50%;
 }
@@ -291,6 +290,17 @@
     border-color: #004a75;
     color: white;
     font-weight: 700;
+}
+#calendar-box{
+    border: 1px solid #dcdcdc;
+}
+@media (max-width: 575.98px) { #calendar-box{border: none;}}
+@media (max-width: 380px) { 
+    #calendar-box{border: none;}
+    .fc .fc-scrollgrid-liquid {
+        height: 278px;
+    }
+    #bookBtn{margin-top: 2rem;}
 }
 #calendar-box::before{
     content: "";

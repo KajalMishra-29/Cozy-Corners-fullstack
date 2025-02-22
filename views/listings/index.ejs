@@ -1,11 +1,11 @@
 <% layout("/layouts/boilerplate") %>
 <body class="index">
-    <h1 class="mt-4 text-center fw-bold" style="color: #22668D; font-size: 3rem;">Cozy Corners</h1>
-    <h4 class="mb-4 text-center fw-bold" style="color: #ffbf49; word-spacing: 4px;">Your Perfect Stay, Just a Click Away!</h4>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 mt-2 mb-5 g-5">
+    <h1 class="mt-4 text-center fw-bold" style="color: #22668D;">Cozy Corners</h1>
+    <h4 class="mb-4 text-center fw-bold" style="color: #ffae17; word-spacing: 4px;">Your Perfect Stay, Just a Click Away!</h4>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 mt-2 mb-5 g-sm-5">
          <% allListings.forEach(listing => { %>
-             <a href="/listings/<%= listing.id %>" class="text-decoration-none">
-                 <div class="card rounded-3 index-card" >
+             <a href="/listings/<%= listing.id %>" class="text-decoration-none mb-sm-0 mb-5">
+                 <div class="card rounded-3" >
                     <div class="img-box">
                         <img src="<%= listing.image.url %>" class="card-img-top rounded-top-3" alt="...">
                         <div class="listing-card-overlay rounded-top-3">
