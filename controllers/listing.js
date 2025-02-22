@@ -18,19 +18,18 @@ module.exports.showListing = async (req, res, next) => {
             }
         })
         .populate("owner");
-    console.log(listing)
     // bookings for the listing of current user
-    let userListingBookings = [];
+    let currUserBookings = [];
     if (req.user) {
         let user = await User.findById(req.user._id).populate("bookings");
         let userBookings = user.bookings;
-        userListingBookings = userBookings.filter(booking => booking.listing == id);
+        currUserBookings = userBookings.filter(booking => booking.listing == id);
     }
     if (!listing) {
         req.flash("error", "Listing you requested for does not exist!");
         return res.redirect("/listings");
     }
-    res.render("listings/show.ejs", { listing, userListingBookings });
+    res.render("listings/show.ejs", { listing, currUserBookings });
 }
 module.exports.createListing = async (req, res, next) => {
     const newListing = new Listing(req.body.listing);
@@ -74,16 +73,4 @@ module.exports.deleteListing = async (req, res, next) => {
     await Listing.findByIdAndDelete(id);
     req.flash("success", "listing deleted successfully!")
     res.redirect("/listings");
-}
-module.exports.renderSetMapLocation = async (req, res) => {
-    const { id } = req.params;
-    const listing = await Listing.findById(id)
-    res.render("listings/setMap.ejs", { listing });
-}
-module.exports.saveLocation = async (req, res) => {
-    const { id } = req.params;
-    const listing = await Listing.findById(id);
-    listing.coordinates = req.body.coordinates;
-    await listing.save();
-    res.redirect(`/listings/${id}`);
 }

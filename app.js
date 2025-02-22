@@ -13,6 +13,7 @@ const listingRouter = require("./routes/listing");
 const reviewRouter = require("./routes/review");
 const userRouter = require("./routes/user");
 const bookingRouter = require("./routes/booking");
+const mapRouter = require("./routes/map");
 const session = require("express-session");
 const flash = require("connect-flash");
 const passoprt = require("passport");
@@ -75,6 +76,7 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter)
 app.use("/", userRouter);
 app.use("/listings/:id/bookings", bookingRouter);
+app.use("/listings/:id/maps", mapRouter);
 
 app.all('*', (req, res, next) => {
     next(new ExpressError(404, "Page Not Found"));

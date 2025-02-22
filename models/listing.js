@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Review = require("./review");
 const { cloudinary } = require("../cloudConfig");
 const { array } = require("joi");
+const Booking = require("./booking");
 
 const listingSchema = new mongoose.Schema({
     title: { type: String, required: true },
@@ -47,11 +48,17 @@ const listingSchema = new mongoose.Schema({
 
 // Middleware to delete associated reviews when a listing is deleted
 listingSchema.post("findOneAndDelete", async (listing) => {
+    // delete reviews for that listing
     if (listing && listing.reviews.length > 0) {
         await Review.deleteMany({ _id: { $in: listing.reviews } });
     }
+    // delete image in cloudinary
     if (listing && listing.image.filename) {
         await cloudinary.uploader.destroy(listing.image.filename);
+    }
+    // delete bookings
+    if (listing && listing.bookings.length > 0) {
+        await Booking.deleteMany({ _id: { $in: listing.bookings } });
     }
 })
 

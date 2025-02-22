@@ -4,6 +4,16 @@ window.addEventListener('load', () => {
         el.classList.add('loaded');
     })
 })
+
+document.querySelectorAll(".cancelBookingForm").forEach(form => {
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (confirm("Are you sure to cancel this booking?")) {
+            this.submit()
+        }
+    })
+})
+
 // password display
 let passwordEyeBox = document.getElementById("password-eye-box");
 let passwordEyeIcon = document.querySelector("#password-eye-box i");

@@ -72,3 +72,13 @@ module.exports.bookingStatus = async (req, res, next) => {
     }
     res.redirect(`/listings/${id}`);
 }
+
+module.exports.cancelBooking = async (req, res, next) => {
+    const { id, b_id } = req.params;
+    // delete this booking from listing and user 
+    await Listing.findByIdAndUpdate(id, { $pull: { bookings: b_id } });
+    await User.findByIdAndUpdate(req.user._id, { $pull: { bookings: b_id } })
+    await Booking.findByIdAndDelete(b_id);
+    req.flash("success", "Your booking is cancelled successfully");
+    res.redirect(`/listings/${id}`)
+}

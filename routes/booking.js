@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router({ mergeParams: true });
 const wrapAsync = require("../utils/wrapAsync")
-const { isLoggedIn } = require("../middleware");
+const { isLoggedIn, isBookingAuthor } = require("../middleware");
 const bookingController = require("../controllers/booking");
 
 router.post("/saveDate",
@@ -11,6 +11,11 @@ router.post("/saveDate",
 router.get("/book",
     isLoggedIn,
     wrapAsync(bookingController.book)
+);
+router.delete("/:b_id/cancelBooking",
+    isLoggedIn,
+    isBookingAuthor,
+    wrapAsync(bookingController.cancelBooking)
 );
 
 router.get("/bookedDates",

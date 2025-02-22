@@ -2,6 +2,7 @@ const Listing = require("./models/listing");
 const Review = require("./models/review");
 const ExpressError = require("./utils/ExpressError")
 const { listingSchema, reviewSchema, userSchema } = require("./schema");
+const Booking = require("./models/booking");
 
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
@@ -56,8 +57,16 @@ module.exports.isOwner = async (req, res, next) => {
 module.exports.isReviewAuthor = async (req, res, next) => {
     let { id, r_id } = req.params;
     let review = await Review.findById(r_id);
-    // listing.owner.toString() !== req.user._id.toString() 
     if (!review.author.equals(req.user._id)) {
+        req.flash("error", "Access denied: You do not have the required permissions.");
+        return res.redirect(`/listings/${id}`);
+    }
+    next();
+}
+module, exports.isBookingAuthor = async (req, res, next) => {
+    let { id, b_id } = req.params;
+    let booking = await Booking.findById(b_id);
+    if (!booking.user.equals(req.user._id)) {
         req.flash("error", "Access denied: You do not have the required permissions.");
         return res.redirect(`/listings/${id}`);
     }
