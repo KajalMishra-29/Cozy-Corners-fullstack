@@ -78,13 +78,26 @@ CozyCorners follows the Model-View-Controller (MVC) architectural pattern:
   - Session-based date selection before booking confirmation.
   - Booked dates are disabled in the UI.
 
+- **Map Integration** : It includes maps using `Mapbox` to display and set location for the listing.
+
+  - **Location Storage** – Stores `longitude & latitude` in `GeoJSON`; owner of listing can manually update exact location.
+  - **Map Display** :
+    - Renders with `Mapbox GL JS`, centering on listing coordinates.
+    - If coordinates are not available, the system attempts `geocoding` (converting city, state, country into coordinates) using the `Mapbox Geocoding API`.
+  - **Interactive Selection** – Users click on the map to pick a location, coordinates auto-fill and save.
+  - **Dynamic Styles** – Switch between streets, satellite, dark mode, etc., via radio buttons.
+  - **Marker & Popup** – A marker shows listing location with city, state, and country; defaults to New Delhi if missing.
+  - Route Handling :
+    - `/setMapCoordinates` to update a listing's location
+    - `POST` request to `/saveLocation` stores the selected coordinates in the database.
+
 - **Image Upload & Storage** :
   - `Multer` handles `multipart/form-data uploads`.
   - `Cloudinary` is used for cloud-based image storage.
   - Image URLs from Cloudinary are stored in MongoDB under the Listing model.
 - **Client-Side and Server-Side Validation** :
-- Bootstrap's built-in validation for client-side.
-- `Joi` schema validation for server-side.
+  - Bootstrap's built-in validation for client-side.
+  - `Joi` schema validation for server-side.
 - **Authorization & Authentication** :
   - `Passport.js` for user authentication.
   - Role-based access control.

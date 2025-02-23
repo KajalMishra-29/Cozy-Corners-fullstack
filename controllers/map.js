@@ -8,7 +8,8 @@ module.exports.renderSetMapLocation = async (req, res) => {
 module.exports.saveLocation = async (req, res) => {
     const { id } = req.params;
     const listing = await Listing.findById(id);
-    listing.coordinates = req.body.coordinates;
-    await listing.save();
+    let { longitude, latitude } = req.body;
+    listing.geometry.coordinates = [longitude, latitude];
+    let result = await listing.save();
     res.redirect(`/listings/${id}`);
 }

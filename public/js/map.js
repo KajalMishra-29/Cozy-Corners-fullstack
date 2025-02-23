@@ -40,7 +40,7 @@ const getCoordinates = async (city, state, country) => {
         };
         let longitude = data.features[0].center[0];
         let latitude = data.features[0].center[1];
-        return { latitude, longitude };
+        return { longitude, latitude };
     } catch (error) {
         console.error("Error fetching coordinates:", error);
         return null;
@@ -49,15 +49,16 @@ const getCoordinates = async (city, state, country) => {
 
 // 1. Check if original coordinates are available and render map accordingly
 (async function () {
-    if (Object.keys(originalSetCoordinates).length > 0) {
+    if (geometry.coordinates.length != 0) {
         // 2. Render map with original coordinates
-        renderMapWithCoordinates(originalSetCoordinates);
+        let coordinates = { longitude: geometry.coordinates[0], latitude: geometry.coordinates[1] };
+        renderMapWithCoordinates(coordinates);
     } else {
         // 3. Fetch coordinates using geocoding
-        const coordinates = await getCoordinates(city, state, country);
+        let coordinates = await getCoordinates(city, state, country);
         if (!coordinates) {
             // 4. Fallback to New Delhi if geocoding fails
-            coordinates = { latitude: 28.6139, longitude: 77.2090 };
+            coordinates = { longitude: 77.2090, latitude: 28.6139 };
         }
         renderMapWithCoordinates(coordinates);
     }

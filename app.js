@@ -78,6 +78,9 @@ app.use("/", userRouter);
 app.use("/listings/:id/bookings", bookingRouter);
 app.use("/listings/:id/maps", mapRouter);
 
+app.get("/home", (req, res) => {
+    res.render("home.ejs")
+})
 app.all('*', (req, res, next) => {
     next(new ExpressError(404, "Page Not Found"));
 })

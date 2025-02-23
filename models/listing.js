@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Review = require("./review");
 const { cloudinary } = require("../cloudConfig");
-const { array } = require("joi");
+const { array, required } = require("joi");
 const Booking = require("./booking");
 
 const listingSchema = new mongoose.Schema({
@@ -40,9 +40,14 @@ const listingSchema = new mongoose.Schema({
         enum: ['open', 'close'],
         default: 'open'
     },
-    coordinates: {
-        latitude: Number,
-        longitude: Number
+    geometry: {
+        type: {
+            type: String,
+            enum: ['Point']
+        },
+        coordinates: {
+            type: [Number]
+        }
     }
 })
 

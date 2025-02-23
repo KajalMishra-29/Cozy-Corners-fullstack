@@ -7,8 +7,8 @@
     <div class="fw-bold mt-3 mb-4 fs-4 text-center" style="color: #161851;">Click on the map to select the exact location</div>
     <form action="/listings/<%= listing._id %>/maps/saveLocation" method="post" class="mb-2">
         <div class="d-inline-block me-2">
-            <input type="number" step="any" name="coordinates[longitude]" id="longitude" readonly>
-            <input type="number" step="any" name="coordinates[latitude]" id="latitude" readonly>
+            <input type="number" step="any" name="longitude" id="longitude" readonly>
+            <input type="number" step="any" name="latitude" id="latitude" readonly>
         </div>
         <button class="btn-blue rounded-pill">Save Location</button>
     </form>

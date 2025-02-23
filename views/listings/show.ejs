@@ -1,7 +1,7 @@
 <% layout("/layouts/boilerplate") %>
 <script>
     const mapToken = "<%= process.env.MAP_TOKEN%>"
-    let originalSetCoordinates = JSON.parse('<%- JSON.stringify(listing.coordinates) %>')
+    let geometry = JSON.parse('<%- JSON.stringify(listing.geometry)%>')
     const city = "<%= listing.city %>" 
     const state = "<%= listing.state %>"
     const country = "<%= listing.country %>"
@@ -101,7 +101,7 @@
     <!-- maps -->
     <div class="row mt-5">
         <div class="col-xl-9 col-lg-10 mx-auto">
-            <% if (!listing.coordinates || !listing.coordinates.latitude || !listing.coordinates.longitude) { %>
+            <% if (!listing.geometry.coordinates.length > 0) { %>
                 <h5>Exact location has not been updated yet!</h5>            
             <% } else { %>
                 <h5>You will be here!</h5>

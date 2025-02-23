@@ -319,7 +319,6 @@
     visibility: hidden;
     transition: all 0.1s ease-in;
 }
-
 #booking-number{
     font-weight: 600;
     color: #222222;
@@ -346,3 +345,20 @@
     overflow: visible;
     opacity: 1;
 }
+.swiper-slide{
+    background-size: cover;
+    border-radius: 10px;
+}
+.swiper{
+    height: 15rem;
+}
+.slide-one{background-image: url("../assets/bg1.jpg");}
+.slide-two{background-image: url("../assets/bg11.jpg");}
+.slide-three{background-image: url("../assets/bg12.jpg");}
+.slide-four{background-image: url("../assets/bg6.avif");}
+.slide-five{background-image: url("../assets/bg14.jpg");}
+.slide-six{background-image: url("../assets/bg15.jpg");}
+.slide-seven{background-image: url("../assets/bg16.jpg");}
+.slide-eight{background-image: url("../assets/bg17.jpg");}
+.slide-nine{background-image: url("../assets/bg4.jpg");}
+.slide-ten{background-image: url("../assets/bg5.jpg");}
