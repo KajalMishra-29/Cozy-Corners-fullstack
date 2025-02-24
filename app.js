@@ -49,7 +49,7 @@ app.use(express.static(path.join(__dirname, "public")));
 const store = MongoStore.create({
     mongoUrl: altasDB_url,
     crypto: {
-        secret: process.env.secret
+        secret: process.env.SECRET
     },
     touchAfter: 24 * 60 * 60
 })
@@ -58,7 +58,7 @@ store.on("error", (err) => {
 })
 const sessionOptions = {
     store: store,
-    secret: process.env.secret,
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
