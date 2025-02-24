@@ -22,7 +22,7 @@ const passport = require("passport");
 const User = require("./models/user");
 const scheduleBookingCleanup = require("./utils/bookingCleanup");
 
-const mongoDB_url = "mongodb://127.0.0.1:27017/CozyCorners";
+// const mongoDB_url = "mongodb://127.0.0.1:27017/CozyCorners";
 const altasDB_url = process.env.ATLASDB_URL;
 
 async function main() {
