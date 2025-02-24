@@ -49,7 +49,7 @@ app.use(express.static(path.join(__dirname, "public")));
 const store = MongoStore.create({
     mongoUrl: altasDB_url,
     crypto: {
-        secret: "mysupersecretcode"
+        secret: process.env.secret
     },
     touchAfter: 24 * 60 * 60
 })
@@ -58,7 +58,7 @@ store.on("error", (err) => {
 })
 const sessionOptions = {
     store: store,
-    secret: "mysupersecretcode",
+    secret: process.env.secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -92,7 +92,8 @@ app.use("/", userRouter);
 app.use("/listings/:id/bookings", bookingRouter);
 app.use("/listings/:id/maps", mapRouter);
 
-app.get("/home", (req, res) => {
+// home page
+app.get("/", (req, res) => {
     res.render("home.ejs")
 })
 app.all('*', (req, res, next) => {

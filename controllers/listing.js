@@ -72,7 +72,7 @@ module.exports.deleteListing = async (req, res, next) => {
     const { id } = req.params;
     await Listing.findByIdAndDelete(id);
     req.flash("success", "Your Listing is deleted successfully");
-    res.redirect("/home");
+    res.redirect("/");
 }
 module.exports.search = async (req, res) => {
     let searchTerm = req.body.searchTerm;

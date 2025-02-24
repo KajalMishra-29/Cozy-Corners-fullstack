@@ -1,4 +1,7 @@
 {
+  "engine": {
+    "node": "20.14.0"
+  },
   "dependencies": {
     "@fullcalendar/core": "^6.1.15",
     "@fullcalendar/daygrid": "^6.1.15",
