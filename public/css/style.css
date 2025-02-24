@@ -14,7 +14,6 @@
 }
 .index .card{
     background-color: transparent;
-    box-shadow: 0 0 18px #bdbdbd;
 }
 .index .card-body{
     color: var(--secondary-color);

@@ -1,10 +1,26 @@
 <% layout("/layouts/boilerplate") %>
+<%- include('../includes/flash.ejs') %>
 <script>
     const mapToken = "<%= process.env.MAP_TOKEN%>"
     let geometry = JSON.parse('<%- JSON.stringify(listing.geometry)%>')
     const city = "<%= listing.city %>" 
     const state = "<%= listing.state %>"
     const country = "<%= listing.country %>"
+
+    document.querySelectorAll(".cancelBookingForm").forEach(form => {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (confirm("Are you sure to cancel this booking?")) {
+                this.submit()
+            }
+        })
+    })
+    document.querySelector("#deleteListingForm").addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (confirm("Are you sure to delete this listing?")) {
+            this.submit();
+        }
+    })
 </script>
 
 <body class="show">

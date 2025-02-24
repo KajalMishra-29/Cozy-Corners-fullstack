@@ -1,4 +1,5 @@
 <% layout("/layouts/boilerplate") %>
+<%- include('../includes/flash.ejs') %>
 <body class="new">
     <div class="col-xl-9 col-lg-10 col-md-11 mx-auto">
         <h1 class="text-center fw-bold mt-4" style="color: #fff; word-spacing: 0.5rem;">Create new Listing</h1>
@@ -30,9 +31,9 @@
                     <select class="form-select" name="listing[category]" required>
                         <option value="mountain" selected>mountain</option>
                         <option value="room">rooms</option>
-                        <option value="iconic citie">iconic city</option>
+                        <option value="iconic city">iconic city</option>
                         <option value="amazing pool">amazing pools</option>
-                        <option value="Camping">camping</option>
+                        <option value="camping">camping</option>
                         <option value="farm house">farm house</option>
                         <option value="tree house">tree house</option>
                         <option value="beach">beach</option>

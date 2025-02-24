@@ -1,4 +1,5 @@
 <% layout("/layouts/boilerplate") %>
+<%- include('../includes/flash.ejs') %>
 <body>
     <div class="col-xl-9 col-lg-10 col-md-11 mx-auto">
         <h1 class="text-center fw-bold mt-4 mb-5" style="color: #22668D; word-spacing: 0.5rem;">Welcome Back! Login to CozyCorners</h1>
@@ -15,7 +16,7 @@
                     <label for="password" class="form-label mb-1">Enter your password :</label>
                     <div class="input-group">
                         <input type="password" name="password" id="password" class="form-control" required>
-                        <span class="input-group-text" style="cursor: pointer;" id="password-eye-box"><i class="fa-regular fa-eye-slash"></i></span>
+                        <span class="input-group-text rounded-end-2" style="cursor: pointer;" id="password-eye-box"><i class="fa-regular fa-eye-slash"></i></span>
                         <div class="invalid-feedback">
                             Password is required, please provide a vaid password.
                         </div>

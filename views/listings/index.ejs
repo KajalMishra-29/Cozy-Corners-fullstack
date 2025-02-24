@@ -121,10 +121,10 @@
         </div>
     </div>
 </div>
-<%- include('../includes/flash.ejs') %>
 <body class="index">
-    <div class="row my-md-0 my-3 py-3 py-md-2"></div>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 my-5 g-sm-5">
+    <div class="pb-5 pt-4"></div>
+    <%- include('../includes/flash.ejs') %>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 mt-2 mb-5 g-sm-5 ">
          <% allListings.forEach(listing => { %>
              <a href="/listings/<%= listing._id %>" class="text-decoration-none mb-sm-0 mb-5">
                  <div class="card rounded-3" >
