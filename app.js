@@ -15,16 +15,18 @@ const userRouter = require("./routes/user");
 const bookingRouter = require("./routes/booking");
 const mapRouter = require("./routes/map");
 const session = require("express-session");
+const MongoStore = require('connect-mongo');
 const flash = require("connect-flash");
-const passoprt = require("passport");
-const LocalStratergy = require("passport-local");
+const LocalStrategy = require("passport-local");
 const passport = require("passport");
 const User = require("./models/user");
 const scheduleBookingCleanup = require("./utils/bookingCleanup");
 
+const mongoDB_url = "mongodb://127.0.0.1:27017/CozyCorners";
+const altasDB_url = process.env.ATLASDB_URL;
 
 async function main() {
-    await mongoose.connect("mongodb://127.0.0.1:27017/CozyCorners");
+    await mongoose.connect(altasDB_url);
 }
 main()
     .then(() => {
@@ -44,7 +46,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
+const store = MongoStore.create({
+    mongoUrl: altasDB_url,
+    crypto: {
+        secret: "mysupersecretcode"
+    },
+    touchAfter: 24 * 60 * 60
+})
+store.on("error", (err) => {
+    console.log("error in MONGO SESSION STORE", err)
+})
 const sessionOptions = {
+    store: store,
     secret: "mysupersecretcode",
     resave: false,
     saveUninitialized: true,
@@ -54,14 +67,15 @@ const sessionOptions = {
         httpOnly: true
     }
 }
+
 app.use(session(sessionOptions));
 
 app.use(flash());
 
-app.use(passoprt.initialize());
-app.use(passoprt.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
-passport.use(new LocalStratergy(User.authenticate()));
+passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 

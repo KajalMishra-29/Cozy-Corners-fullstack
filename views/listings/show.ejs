@@ -9,23 +9,32 @@
 
 <body class="show">
     <div class="row mb-4 mt-3">
-        <% if (currUser && currUser._id.equals(listing.owner._id)) { %>
-            <ul class="nav align-items-center justify-content-xl-start justify-content-center">
-                <li class="nav-item mb-3">
-                  <a href="/listings/<%= listing.id %>/edit" class="btn btn-blue me-2 px-4 fw-semibold rounded-pill">Update</a>
-                </li>
-                <li class="nav-item mb-3">
-                    <form action="/listings/<%= listing.id %>?_method=DELETE" method="post">
-                        <button class="btn-yellow me-2 px-4 fw-semibold rounded-pill">Delete</button>
-                    </form>
-                </li>
-                <li class="nav-item mb-3">
-                    <a href="/listings/<%= listing.id %>/bookings/bookingStatus" class="btn-blue-outline rounded-pill me-2">Change Booking Status</a> 
-                </li>
-                <li class="nav-item mb-3">
-                    <a href="/listings/<%= listing.id %>/maps/setMapCoordinates" class="btn-yellow-outline rounded-pill">Update Location on Map</a>  
-                </li>
-            </ul>
+        <% if (currUser && currUser._id.equals(listing.owner._id)) { %> 
+            <!-- Button for Small Screens (md and below) -->
+            <p class="d-md-none">
+                <button class="btn btn-white fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#ownerActions">
+                    Show Actions<i class="ms-1 fa-solid fa-arrow-right"></i>
+                </button>
+            </p>
+            <!-- Owner Actions (Visible on md+ screens & collapsible on small screens) -->
+            <div class="collapse d-md-block" id="ownerActions">
+                <ul class="nav align-items-center justify-content-xl-start justify-content-center">
+                    <li class="nav-item mb-3">
+                        <a href="/listings/<%= listing.id %>/edit" class="btn btn-blue me-2 px-4 fw-semibold rounded-pill">Update</a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <form action="/listings/<%= listing.id %>?_method=DELETE" method="post"  id="deleteListingForm">
+                            <button class="btn-yellow me-2 px-4 fw-semibold rounded-pill">Delete</button>
+                        </form>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a href="/listings/<%= listing.id %>/bookings/bookingStatus" class="btn-blue-outline rounded-pill me-2">Change Booking Status</a> 
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a href="/listings/<%= listing.id %>/maps/setMapCoordinates" class="btn-yellow-outline rounded-pill">Update Location on Map</a>  
+                    </li>
+                </ul>
+            </div>
          <% } %>
     </div>
     <div class="row">
@@ -154,7 +163,8 @@
         </div>
    
     <!-- render all reviews -->
-    <div class="row row-cols-1 row-cols-md-2 mt-5">
+    <h5 class="mb-5 pb-3 text-center border-bottom">Average &nbsp; Rating : <%= listing.averageRating %></h5>
+    <div class="row row-cols-1 row-cols-md-2">
         <% listing.reviews.forEach(review => { %>
             <div class="col">
                 <div class="p-3 mb-4 bg-light border rounded-4 position-relative" style="height: 90%;">

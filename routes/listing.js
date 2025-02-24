@@ -49,4 +49,9 @@ router.get("/:id/edit",
     isOwner,
     wrapAsync(listingController.updateForm)
 );
+// search based on index
+router.post("/search", wrapAsync(listingController.search))
+// filter listings
+router.get("/filters/:filterType", wrapAsync(listingController.filters))
+
 module.exports = router;

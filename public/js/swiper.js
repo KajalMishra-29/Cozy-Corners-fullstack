@@ -32,3 +32,20 @@ const swiper = new Swiper('.swiper', {
         },
     }
 });
+const swiperIndex = new Swiper('.swiper-index', {
+    slidesPerView: 10,
+    spaceBetween: 0,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    loop: true,
+    breakpoints: {
+        320: { slidesPerView: 3 },
+        480: { slidesPerView: 4 },
+        560: { slidesPerView: 5 },
+        768: { slidesPerView: 6 },
+        1024: { slidesPerView: 8 },
+        1280: { slidesPerView: 9 }
+    }
+});

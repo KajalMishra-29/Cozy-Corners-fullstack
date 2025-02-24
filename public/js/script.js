@@ -13,7 +13,12 @@ document.querySelectorAll(".cancelBookingForm").forEach(form => {
         }
     })
 })
-
+document.querySelector("#deleteListingForm").addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (confirm("Are you sure to delete this listing?")) {
+        this.submit();
+    }
+})
 // password display
 let passwordEyeBox = document.getElementById("password-eye-box");
 let passwordEyeIcon = document.querySelector("#password-eye-box i");

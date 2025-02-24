@@ -71,6 +71,34 @@ module.exports.updateListing = async (req, res, next) => {
 module.exports.deleteListing = async (req, res, next) => {
     const { id } = req.params;
     await Listing.findByIdAndDelete(id);
-    req.flash("success", "listing deleted successfully!")
-    res.redirect("/listings");
+    req.flash("success", "Your Listing is deleted successfully");
+    res.redirect("/home");
+}
+module.exports.search = async (req, res) => {
+    let searchTerm = req.body.searchTerm;
+    let results = await Listing.find({
+        $text: { $search: searchTerm }
+    })
+    res.render("listings/index.ejs", { allListings: results });
+}
+module.exports.filters = async (req, res) => {
+    let filterType = req.params.filterType;
+    let results;
+    if (filterType == "trending") {
+        // find top 10 trending listings based on no. of bookings and average rating
+        results = await Listing.aggregate([
+            {
+                $addFields: {
+                    bookingCount: { $size: "$bookings" }
+                }
+            },
+            {
+                $sort: { averageRating: -1, bookingCount: -1 }
+            },
+            { $limit: 10 }
+        ])
+    } else {
+        results = await Listing.find({ category: `${filterType}` });
+    }
+    res.render("listings/index.ejs", { allListings: results });
 }

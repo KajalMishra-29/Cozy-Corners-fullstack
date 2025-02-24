@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-md bg-light border-bottom sticky-top">
-    <div class="container-fluid">
+<nav class="navbar navbar-expand-xl bg-light border-bottom sticky-top">
+    <div class="container-fluid bg-light" style="z-index: 100;">
       <a class="navbar-brand me-4" href="/listings"><span class="material-symbols-outlined">tsunami</span>CozyCorners</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -8,14 +8,20 @@
         <div class="navbar-nav">
           <a class="nav-link navigation-underline me-2 mb-1 py-1" aria-current="page" href="/home">Home</a>
           <a class="nav-link navigation-underline me-2 mb-1 py-1" href="/listings">All Listings</a>
-          <a class="nav-link navigation-underline me-2 mb-md-1 mb-3 py-1" href="/listings/new">Add New Listing</a>
+          <a class="nav-link navigation-underline me-2 mb-1 py-1" href="/listings/new">New Listing</a>
+        </div>
+        <div class="navbar-nav ms-auto mb-xl-1 mb-3 ">
+          <form action="/listings/search" method="post" id="nav-search" class="d-flex" role="search">
+            <input class="form-control me-2 rounded-pill" name="searchTerm" type="search" placeholder="Search  for  destinations" style="box-shadow: 0 0 7px #d7d7d7;">
+            <button class="btn-blue-outline rounded-pill" type="submit"><i class="fa-solid fa-magnifying-glass me-2" style="display: inline"></i>Search</button>
+          </form>
         </div>
         <div class="ms-auto">
           <% if (!currUser) { %>
-            <a href="/signup" class="btn-blue rounded-pill mb-md-1 mb-3 py-2 px-3 me-1">Signup</a>
-            <a href="/login" class="btn-yellow rounded-pill mb-md-1 mb-3 py-2 px-3">Login</a>
+            <a href="/signup" class="btn-blue rounded-pill mb-xl-1 mb-3 py-2 px-3 me-1">Signup</a>
+            <a href="/login" class="btn-yellow rounded-pill mb-xl-1 mb-3 py-2 px-3">Login</a>
           <% }  else { %>
-            <a href="/logout" class="btn-blue rounded-pill mb-md-1 mb-3 py-2 px-3">Logout</a>
+            <a href="/logout" class="btn-blue rounded-pill mb-xl-1 mb-3 py-2 px-3">Logout</a>
           <% } %>
         </div>
       </div>

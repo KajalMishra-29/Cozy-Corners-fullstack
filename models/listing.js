@@ -48,8 +48,33 @@ const listingSchema = new mongoose.Schema({
         coordinates: {
             type: [Number]
         }
-    }
+    },
+    category: {
+        type: String,
+        enum: ["others", "room", "iconic city", "mountain", "amazing pool", "camping", "farm house", "tree house", "beach", "arctic", "dome", "boat", "cottage", "national park"],
+        required: true
+    },
+    averageRating: { type: Number, default: 0 }
 })
+// Creating a text indexes for better search performance
+listingSchema.index(
+    {
+        title: 'text',
+        description: 'text',
+        city: 'text',
+        state: 'text',
+        country: 'text'
+    },
+    {
+        weights: {
+            title: 10,
+            description: 7,
+            city: 5,
+            state: 3,
+            country: 2
+        }
+    }
+)
 
 // Middleware to delete associated reviews when a listing is deleted
 listingSchema.post("findOneAndDelete", async (listing) => {
