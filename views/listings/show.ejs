@@ -9,6 +9,7 @@
 
 <body class="show">
     <div class="row mb-4 mt-3">
+        <% let currUser %>
         <% if (currUser && currUser._id.equals(listing.owner._id)) { %> 
             <!-- Button for Small Screens (md and below) -->
             <p class="d-md-none">
