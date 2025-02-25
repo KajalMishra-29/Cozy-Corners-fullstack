@@ -58,6 +58,7 @@ module.exports.bookedDates = async (req, res) => {
         res.json({ error: "No such listing found" });
     }
     const bookedDates = listing.bookings.map(booking => booking.date.toLocaleDateString("en-CA"));
+    console.log(bookedDates);
     res.json({ success: true, dates: bookedDates });
 }
 
