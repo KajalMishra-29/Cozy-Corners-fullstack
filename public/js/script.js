@@ -4,7 +4,6 @@ window.addEventListener('load', () => {
         el.classList.add('loaded');
     })
 })
-
 // password display
 let passwordEyeBox = document.getElementById("password-eye-box");
 let passwordEyeIcon = document.querySelector("#password-eye-box i");

@@ -64,9 +64,9 @@ document.addEventListener('DOMContentLoaded', function () {
             fetchAndMarkNookedDates(); // Fetch and mark dates when changing months
         },
         dateClick: function (info) {
-            let today = new Date();
+            let today = new Date(); // Tue Feb 25 2025 18:32:37 GMT+0530 (India Standard Time)
+            let clickedDate = info.date;
             today.setHours(0, 0, 0, 0);
-            let clickedDate = new Date(info.dateStr);
             clickedDate.setHours(0, 0, 0, 0);
             if (clickedDate < today) {
                 alert("you cannot book past dates!");
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 fetch(`/listings/${listingId}/bookings/saveDate`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(SelectedDate),
+                    body: JSON.stringify(info),
                 })
                     .then(response => response.json())
                     .then(data => {

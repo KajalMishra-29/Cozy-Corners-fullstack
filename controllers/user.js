@@ -41,6 +41,6 @@ module.exports.logout = async (req, res, next) => {
             next(err);
         }
         req.flash("success", "you are successfully logged out !");
-        res.redirect("/listings");
+        res.redirect("/");
     })
 }

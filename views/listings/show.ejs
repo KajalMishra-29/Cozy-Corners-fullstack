@@ -6,21 +6,6 @@
     const city = "<%= listing.city %>" 
     const state = "<%= listing.state %>"
     const country = "<%= listing.country %>"
-
-    document.querySelectorAll(".cancelBookingForm").forEach(form => {
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-            if (confirm("Are you sure to cancel this booking?")) {
-                this.submit()
-            }
-        })
-    })
-    document.querySelector("#deleteListingForm").addEventListener('submit', function (e) {
-        e.preventDefault();
-        if (confirm("Are you sure to delete this listing?")) {
-            this.submit();
-        }
-    })
 </script>
 
 <body class="show">
@@ -114,7 +99,7 @@
                                     <p class="card-text mb-1 fw-bold text-success">Status : Confirmed</p>
                                 <% } %> 
                                 <form class="cancelBookingForm" action="/listings/<%= listing.id %>/bookings/<%= booking._id %>/cancelBooking?_method=DELETE" method="post">
-                                    <button class="mt-3 btn-blue-outline rounded-pill" style="width: 100%;">Cancel Booking</button>
+                                    <button class="mt-3 btn-blue-outline rounded-pill">Cancel Booking</button>
                                 </form> 
                             </div>
                         </div>
@@ -203,3 +188,19 @@
         <% }) %>
     </div>
 </body>
+<script>
+    document.querySelectorAll(".cancelBookingForm").forEach(form => {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (confirm("Are you sure to cancel this booking?")) {
+                this.submit()
+            }
+        })
+    })
+    document.querySelector("#deleteListingForm").addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (confirm("Are you sure to delete this listing?")) {
+            this.submit();
+        }
+    })
+</script>
