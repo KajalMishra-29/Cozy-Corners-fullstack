@@ -28,6 +28,7 @@ module.exports.book = async (req, res) => {
     }
     let { date, dateStr } = req.session.bookDateInfo;
     const bookedDates = listing.bookings.map(booking => booking.date.toLocaleDateString("en-CA"));
+    console.log(bookedDates);
     if (bookedDates.includes(dateStr)) {
         req.flash("error", "This date is already booked. Please select a different day.")
         return res.redirect(`/listings/${id}`);
