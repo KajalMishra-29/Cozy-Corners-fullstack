@@ -32,21 +32,18 @@ Sessions are managed using `express-session` and `cookies`, ensuring secure user
 CozyCorners follows the Model-View-Controller (MVC) architectural pattern:
 
 - Model:
-
-  - Defines `Schema` and interacts with the database using Mongoose.
-  - Models include Listing, User, Review, and Booking.
+  - Defines `Schema` and interacts with the database using `Mongoose`.
+  - `Models` : include `Listing`, `User`, `Review`, and `Booking`.
   - Relationships between models are managed using `MongoDB references (ObjectId)`.
 
 - View:
-
   - The frontend is rendered using `EJS templating`.
   - `EJS-Mate` is used for layout inheritance and dynamic UI rendering.
   - `Bootstrap` provides a responsive design.
 
 - Controller:
-
-  - Express framework to define routing in `(/routes)` and handle request processing (/controllers).
-  - Controllers in `/controllers` handle CRUD operations for listings, users, review and bookings.
+  - Express framework to define routing in `(/routes)` and handle request processing `(/controllers)`.
+  - Controllers in `/controllers` handle `CRUD` operations for listings, users, review and bookings.
   - Middleware functions are used for validation, authentication, and error handling.
 
 - Routes:
@@ -57,11 +54,8 @@ CozyCorners follows the Model-View-Controller (MVC) architectural pattern:
 
 - **CRUD for Rental Listings** : Users can create, view, edit, and delete property listings.
 - **Restful API**
-
 - **Dynamic UI Rendering** : Uses EJS templating and EJS-Mate for layout inheritance.
-
 - **Database Management**:
-
   - `MongoDB` with `Mongoose` for structured data handling.
   - Multiple models are implemented `Listing`, `User`, `Reviews` and `Booking`.
   - `Schema` for each model is defined with mongoose.
