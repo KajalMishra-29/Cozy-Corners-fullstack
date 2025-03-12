@@ -20,7 +20,9 @@ Sessions are managed using `express-session` and `cookies`, ensuring secure user
 - **Backend**: Node.js, Express.js
 - **Frontend**: EJS, Bootstrap
 - **Database**: MongoDB, Mongoose
-- **Session**: Express-sessions, cookie
+- **Session**: Express-sessions, cookies
+- **Bookings** : FullCalendar, cron
+- **Maps** : Mapbox api
 - **Middleware**: method-override, express.json, express.urlencoded
 - **Validation**: Joi Schema Validation
 - **Authentication**: Passport.js
