@@ -1,5 +1,8 @@
 # CozyCorners - A Rental Listing Platform
 
+## Deployment  
+This website has been deployed using **Render**. Check it out [here](https://cozy-corners-fullstack.onrender.com/).  
+
 ## Description
 
 CozyCorners is a web application that enables users to share and discover unique rental properties. Built with Node, Express.js, MongoDB and EJS, the platform provides intutive experience for users to list, manage, and browse properties.
@@ -14,35 +17,36 @@ Sessions are managed using `express-session` and `cookies`, ensuring secure user
 
 ## Technologies Used
 
-- **Backend**: Node.js, Express.js, MongoDB, Mongoose
+- **Backend**: Node.js, Express.js
 - **Frontend**: EJS, Bootstrap
+- **Database**: MongoDB, Mongoose
+- **Session**: Express-sessions, cookies
+- **Bookings** : FullCalendar, cron
+- **Maps** : Mapbox api
 - **Middleware**: method-override, express.json, express.urlencoded
 - **Validation**: Joi Schema Validation
-- **Authentication**: Passport.js,
+- **Authentication**: Passport.js
 
 ## Architecture - MVC Pattern
 
 CozyCorners follows the Model-View-Controller (MVC) architectural pattern:
 
-- Model:
-
-  - Defines `Schema` and interacts with the database using Mongoose.
-  - Models include Listing, User, Review, and Booking.
+- Model :
+  - Defines `Schema` and interacts with the database using `Mongoose`.
+  - `Models` : include `Listing`, `User`, `Review`, and `Booking`.
   - Relationships between models are managed using `MongoDB references (ObjectId)`.
 
-- View:
-
+- View :
   - The frontend is rendered using `EJS templating`.
   - `EJS-Mate` is used for layout inheritance and dynamic UI rendering.
   - `Bootstrap` provides a responsive design.
 
-- Controller:
-
-  - Express framework to define routing in `(/routes)` and handle request processing (/controllers).
-  - Controllers in `/controllers` handle CRUD operations for listings, users, review and bookings.
+- Controller :
+  - Express framework to define routing in `(/routes)` and handle request processing `(/controllers)`.
+  - Controllers in `/controllers` handle `CRUD` operations for listings, users, review and bookings.
   - Middleware functions are used for validation, authentication, and error handling.
 
-- Routes:
+- Routes :
   - Routes are organized in the `/routes` folder.
   - Separate route files exist for `listings`, `users`, `reviews`, and `bookings`.
 
@@ -50,11 +54,8 @@ CozyCorners follows the Model-View-Controller (MVC) architectural pattern:
 
 - **CRUD for Rental Listings** : Users can create, view, edit, and delete property listings.
 - **Restful API**
-
 - **Dynamic UI Rendering** : Uses EJS templating and EJS-Mate for layout inheritance.
-
 - **Database Management**:
-
   - `MongoDB` with `Mongoose` for structured data handling.
   - Multiple models are implemented `Listing`, `User`, `Reviews` and `Booking`.
   - `Schema` for each model is defined with mongoose.
