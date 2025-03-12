@@ -1,5 +1,8 @@
 # CozyCorners - A Rental Listing Platform
 
+## Deployment  
+This website has been deployed using **Render**. Check it out [here](https://cozy-corners-fullstack.onrender.com/).  
+
 ## Description
 
 CozyCorners is a web application that enables users to share and discover unique rental properties. Built with Node, Express.js, MongoDB and EJS, the platform provides intutive experience for users to list, manage, and browse properties.
@@ -14,11 +17,13 @@ Sessions are managed using `express-session` and `cookies`, ensuring secure user
 
 ## Technologies Used
 
-- **Backend**: Node.js, Express.js, MongoDB, Mongoose
+- **Backend**: Node.js, Express.js
 - **Frontend**: EJS, Bootstrap
+- **Database**: MongoDB, Mongoose
+- **Session**: Express-sessions, cookie
 - **Middleware**: method-override, express.json, express.urlencoded
 - **Validation**: Joi Schema Validation
-- **Authentication**: Passport.js,
+- **Authentication**: Passport.js
 
 ## Architecture - MVC Pattern
 
