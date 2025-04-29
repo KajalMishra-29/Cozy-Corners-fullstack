@@ -209,10 +209,3 @@ const sampleListings = [
   },
 ];
 ```
-
-## Contact
-
-For any issues or feature requests, feel free to reach out:
-
-- Email: your-email@example.com
-- GitHub: [Your GitHub Profile](https://github.com/yourusername)
